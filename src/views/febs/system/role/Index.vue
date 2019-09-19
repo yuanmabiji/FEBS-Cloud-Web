@@ -178,6 +178,8 @@ export default {
       this.role = { ...row }
       if (this.role.menuIds) {
         this.$refs.permsTree.setCheckedKeys(this.role.menuIds.split(','))
+      } else {
+        this.$refs.permsTree.setCheckedKeys([])
       }
     },
     singleDelete(row) {
@@ -265,6 +267,7 @@ export default {
       this.$refs.permsTree.setCheckedKeys([])
     },
     search() {
+      this.resetForm()
       this.fetch({
         ...this.queryParams,
         ...this.sort
