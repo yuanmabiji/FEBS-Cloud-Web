@@ -30,9 +30,21 @@
                   <el-col :span="4" :offset="4">{{ $t('common.TotalVisit') }}</el-col>
                 </el-row>
                 <el-row>
-                  <el-col :span="4" :offset="4" class="num"><el-link type="primary">{{ todayIp }}</el-link></el-col>
-                  <el-col :span="4" :offset="4" class="num"><el-link type="primary">{{ todayVisit }}</el-link></el-col>
-                  <el-col :span="4" :offset="4" class="num"><el-link type="primary">{{ totalVisit }}</el-link></el-col>
+                  <el-col :span="4" :offset="4" class="num">
+                    <el-link type="primary">
+                      <countTo :start-val="0" :end-val="todayIp" :duration="3000" />
+                    </el-link>
+                  </el-col>
+                  <el-col :span="4" :offset="4" class="num">
+                    <el-link type="primary">
+                      <countTo :start-val="0" :end-val="todayVisit" :duration="3000" />
+                    </el-link>
+                  </el-col>
+                  <el-col :span="4" :offset="4" class="num">
+                    <el-link type="primary">
+                      <countTo :start-val="0" :end-val="totalVisit" :duration="3000" />
+                    </el-link>
+                  </el-col>
                 </el-row>
               </div>
             </el-col>
@@ -145,10 +157,12 @@
 <script>
 import echarts from 'echarts'
 import { parseTime } from '@/utils'
+import countTo from 'vue-count-to'
 import resize from '@/components/Charts/mixins/resize'
 
 export default {
   name: 'Dashboard',
+  components: { countTo },
   mixins: [resize],
   data() {
     return {
@@ -295,16 +309,33 @@ export default {
             splitLine: {
               show: false
             },
-            data: dateArr
+            data: dateArr,
+            axisLine: {
+              lineStyle: {
+                color: '#333'
+              }
+            }
           },
           yAxis: [
             {
               type: 'value',
               splitLine: {
-                show: false
+                lineStyle: {
+                  type: 'dashed',
+                  color: '#DDD'
+                }
               },
-              axisLabel: {
-                formatter: '{value}'
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  color: '#333'
+                }
+              },
+              nameTextStyle: {
+                color: '#999'
+              },
+              splitArea: {
+                show: false
               }
             }],
           series: [
@@ -418,7 +449,7 @@ export default {
           p {
             margin: 5px 0 0 0;
             font-size: .7rem;
-            line-height: 1.2rem;
+            line-height: 1.3rem;
             white-space:normal;
           }
         }

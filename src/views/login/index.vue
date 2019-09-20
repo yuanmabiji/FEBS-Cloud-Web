@@ -171,8 +171,8 @@ export default {
           }).then((r) => {
             const data = r.data
             this.saveLoginData(data)
-            this.$get('auth/user/detail').then((r) => {
-              this.$store.commit('account/setUser', r.data.data)
+            this.$get('auth/user').then((r) => {
+              this.$store.commit('account/setUser', r.data.principal)
               this.$message({
                 message: this.$t('tips.loginSuccess'),
                 type: 'success'

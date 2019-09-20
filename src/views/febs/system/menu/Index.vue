@@ -5,10 +5,10 @@
         <div class="app-container">
           <div class="filter-container">
             <el-input v-model="menuName" :placeholder="$t('table.menu.menuName')" class="filter-item search-item" />
-            <el-button class="filter-item" @click="search">
+            <el-button class="filter-item" type="primary" plain @click="search">
               {{ $t('table.search') }}
             </el-button>
-            <el-button class="filter-item" @click="reset">
+            <el-button class="filter-item" type="warning" plain @click="reset">
               {{ $t('table.reset') }}
             </el-button>
             <el-dropdown v-has-any-permission="['menu:add','menu:delete','menu:export']" trigger="click" class="filter-item">

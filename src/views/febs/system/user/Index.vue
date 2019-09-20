@@ -11,10 +11,10 @@
         class="filter-item search-item date-range-item"
         type="daterange"
       />
-      <el-button class="filter-item" @click="search">
+      <el-button class="filter-item" type="primary" plain @click="search">
         {{ $t('table.search') }}
       </el-button>
-      <el-button class="filter-item" @click="reset">
+      <el-button class="filter-item" type="warning" plain @click="reset">
         {{ $t('table.reset') }}
       </el-button>
       <el-dropdown v-has-any-permission="['user:add','user:delete','user:reset','user:export']" trigger="click" class="filter-item">
@@ -81,7 +81,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('table.user.createTime')" align="center" min-width="180px" sortable="custom">
+      <el-table-column :label="$t('table.user.createTime')" prop="createTime" align="center" min-width="180px" sortable="custom">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
