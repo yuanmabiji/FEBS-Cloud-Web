@@ -90,3 +90,7 @@ export function isArray(arg) {
   }
   return Array.isArray(arg)
 }
+
+export function isIntegerGreaterThanZero(arg) {
+  return /(^[1-9]\d*$)/.test(arg)
+}

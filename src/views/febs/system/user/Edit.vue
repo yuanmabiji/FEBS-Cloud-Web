@@ -29,10 +29,11 @@
           :options="depts"
           :clear-value-text="$t('common.clear')"
           placeholder=" "
+          style="width:100%"
         />
       </el-form-item>
       <el-form-item :label="$t('table.user.role')" prop="roleId">
-        <el-select v-model="user.roleId" multiple value="" placeholder="">
+        <el-select v-model="user.roleId" multiple value="" placeholder="" style="width:100%">
           <el-option
             v-for="item in roles"
             :key="item.roleId"
@@ -42,7 +43,7 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="$t('table.user.sex')" prop="sex">
-        <el-select v-model="user.sex" value="" placeholder="">
+        <el-select v-model="user.sex" value="" placeholder="" style="width:100%">
           <el-option value="0" :label="$t('common.sex.male') " />
           <el-option value="1" :label="$t('common.sex.female') " />
           <el-option value="2" :label="$t('common.sex.secret') " />

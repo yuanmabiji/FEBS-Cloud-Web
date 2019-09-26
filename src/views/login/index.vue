@@ -18,50 +18,38 @@
         <lang-select class="set-language" />
       </div>
       <el-form-item prop="username">
-        <span class="svg-container">
-          <el-icon class="el-icon-user" />
-        </span>
         <el-input
           ref="username"
           v-model="loginForm.username"
           :placeholder="$t('login.username')"
+          prefix-icon="el-icon-user"
           name="username"
           type="text"
-          tabindex="1"
           autocomplete="off"
           @keyup.enter.native="handleLogin"
         />
       </el-form-item>
       <el-form-item prop="password">
-        <span class="svg-container">
-          <el-icon class="el-icon-key" />
-        </span>
         <el-input
           :key="passwordType"
           ref="password"
           v-model="loginForm.password"
+          prefix-icon="el-icon-key"
           :type="passwordType"
           :placeholder="$t('login.password')"
           name="password"
-          tabindex="1"
           autocomplete="off"
           @keyup.enter.native="handleLogin"
         />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-        </span>
       </el-form-item>
       <el-form-item prop="code" class="code-input">
-        <span class="svg-container">
-          <el-icon class="el-icon-lock" />
-        </span>
         <el-input
           ref="code"
           v-model="loginForm.code"
+          prefix-icon="el-icon-lock"
           :placeholder="$t('login.code')"
           name="code"
           type="text"
-          tabindex="1"
           autocomplete="off"
           style="width: 70%"
           @keyup.enter.native="handleLogin"
@@ -124,16 +112,6 @@ export default {
     this.getCodeImage()
   },
   methods: {
-    showPwd() {
-      if (this.passwordType === 'password') {
-        this.passwordType = ''
-      } else {
-        this.passwordType = 'password'
-      }
-      this.$nextTick(() => {
-        this.$refs.password.focus()
-      })
-    },
     getCodeImage() {
       axios({
         method: 'GET',
@@ -229,21 +207,15 @@ $cursor: #555;
 }
 /* reset element-ui css */
 .login-container {
-  .el-form-item__content {
-    line-height: 27px !important;
-  }
   .el-input {
     display: inline-block;
-    width: 85%;
-
     input {
       background: transparent;
       border: 0;
       -webkit-appearance: none;
       border-radius: 0;
-      padding: 12px 5px 12px 15px;
       color: #000000;
-      height: 32px;
+      height: 28px;
       caret-color: $cursor;
 
       &:-webkit-autofill {
@@ -333,16 +305,6 @@ $light_gray:#eee;
     }
   }
 
-  .svg-container {
-    padding: 6px 5px 6px 15px;
-    color: $dark_gray;
-    font-size: 1.04rem;
-    vertical-align: middle;
-    margin-bottom: 1px;
-    width: 30px;
-    display: inline-block;
-  }
-
   .title-container {
     position: relative;
 
@@ -362,16 +324,6 @@ $light_gray:#eee;
       right: 0;
       cursor: pointer;
     }
-  }
-
-  .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    font-size: 16px;
-    color: $dark_gray;
-    cursor: pointer;
-    user-select: none;
   }
 
   .thirdparty-button {

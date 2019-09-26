@@ -172,26 +172,33 @@ export default {
     confirmRestPassword: 'Make sure to reset the selected user password?',
     resetPasswordSuccess: 'The selected user password reset has been reset to 1234qwer',
     getCodeImageFailed: 'Failed to get image verification code',
-    tooManyRequest: 'Getting the authentication code is too frequent. Please try again in 1 minute'
+    tooManyRequest: 'Getting the authentication code is too frequent. Please try again in 1 minute',
+    clientOriginSecret: 'The original password of the client is: '
   },
   rules: {
     require: 'Can\'t be empty',
+    range2to10: '2 to 10 characters in length',
     range3to10: '3 to 10 characters in length',
+    range3to20: '3 to 20 characters in length',
     range4to10: '4 to 10 characters in length',
     range6to20: '6 to 20 characters in length',
     email: 'Email is invalid',
     mobile: 'Phone number is invalid',
     usernameExist: 'The username already exists',
+    clientIdExist: 'The clientId already exists',
     roleNameExist: 'The role name already exists',
     noMoreThan10: 'Can\'t exceed 10 characters in length',
+    noMoreThan11: 'Can\'t exceed 11 characters in length',
     noMoreThan20: 'Can\'t exceed 20 characters in length',
     noMoreThan50: 'Can\'t exceed 50 characters in length',
-    noMoreThan100: 'Can\'t exceed 100 characters in length'
+    noMoreThan100: 'Can\'t exceed 100 characters in length',
+    invalidInteger: 'Please enter an integer greater than zero',
+    invalidURL: 'URL is invalid'
   },
   common: {
     system: 'Microservice Auth System',
     desc: {
-      a: 'Based on Spring Boot 2.1.6 & Spring Cloud Greenwich.SR1',
+      a: 'Based on Spring Boot 2.1.8 & Spring Cloud Greenwich.SR3',
       b: 'Use Spring Cloud OAuth2 Unified Authentication',
       c: 'Authentication server resource server separation, easy to expand',
       d: 'Front-end separation architecture for increased efficiency',

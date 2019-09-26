@@ -108,7 +108,7 @@ export default {
       rules: {
         menuName: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { min: 3, max: 10, message: this.$t('rules.range3to10'), trigger: 'blur' }
+          { min: 2, max: 10, message: this.$t('rules.range2to10'), trigger: 'blur' }
         ],
         path: { max: 50, message: this.$t('rules.noMoreThan50'), trigger: 'blur' },
         component: { max: 100, message: this.$t('rules.noMoreThan50'), trigger: 'blur' },

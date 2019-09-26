@@ -172,26 +172,33 @@ export default {
     confirmRestPassword: '确定重置所选用户密码？',
     resetPasswordSuccess: '所选用户密码重置已被重置为1234qwer',
     getCodeImageFailed: '获取图形验证码失败',
-    tooManyRequest: '获取验证码过于频繁，请1分钟后再试'
+    tooManyRequest: '获取验证码过于频繁，请1分钟后再试',
+    clientOriginSecret: '该客户端原始密码为：'
   },
   rules: {
     require: '不能为空',
+    range2to10: '长度在 2 到 10 个字符',
     range3to10: '长度在 3 到 10 个字符',
+    range3to20: '长度在 3 到 20 个字符',
     range4to10: '长度在 4 到 10 个字符',
-    range6to20: '长度在 6 到 10 个字符',
+    range6to20: '长度在 6 到 20 个字符',
     email: '请输入正确的邮箱地址',
     mobile: '请输入合法的手机号',
     usernameExist: '该用户名已存在',
+    clientIdExist: '该Client ID已存在',
     roleNameExist: '该角色名称已存在',
     noMoreThan10: '长度不能超过10个字符',
+    noMoreThan11: '长度不能超过11个字符',
     noMoreThan20: '长度不能超过20个字符',
     noMoreThan50: '长度不能超过50个字符',
-    noMoreThan100: '长度不能超过100个字符'
+    noMoreThan100: '长度不能超过100个字符',
+    invalidInteger: '请输入大于零的整数',
+    invalidURL: '不是有效的URL'
   },
   common: {
     system: '分布式微服务权限系统',
     desc: {
-      a: '基于Spring Boot 2.1.6 & Spring Cloud Greenwich.SR1',
+      a: '基于Spring Boot 2.1.8 & Spring Cloud Greenwich.SR3',
       b: '使用Spring Cloud OAuth2统一认证',
       c: '认证服务器资源服务器分离，方便拓展',
       d: '前后端分离架构，提高软件开发效率',
