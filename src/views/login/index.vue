@@ -39,6 +39,7 @@
           :placeholder="$t('login.password')"
           name="password"
           autocomplete="off"
+          :show-password="true"
           @keyup.enter.native="handleLogin"
         />
       </el-form-item>
