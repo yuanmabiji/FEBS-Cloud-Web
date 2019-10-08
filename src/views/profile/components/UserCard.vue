@@ -31,8 +31,8 @@
           <div class="text-muted">
             <template v-for="(l, index) in logo">
               <div :key="index" class="logo-wrapper">
-                <img v-if="l.bind" :src="resolveLogo(l.img)" :class="{ 'radius': l.radius }" alt="" :title="$t('common.bind')" @click="unbind(l.name)">
-                <img v-else :src="resolveLogo(l.img)" :class="{ 'radius': l.radius }" alt="" :title="$t('common.unbind')" class="unbind" @click="bind(l.name)">
+                <img v-if="l.bind" :src="resolveLogo(l.img)" :class="{ 'radius': l.radius }" alt="" :title="$t('common.unbind')" @click="unbind(l.name)">
+                <img v-else :src="resolveLogo(l.img)" :class="{ 'radius': l.radius }" alt="" :title="$t('common.bind')" class="unbind" @click="bind(l.name)">
               </div>
             </template>
           </div>
