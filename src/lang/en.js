@@ -18,7 +18,13 @@ export default {
     logIn: 'Login',
     username: 'Username',
     password: 'Password',
-    code: 'Code'
+    code: 'Code',
+    ortherLoginType: 'Orther login type',
+    chooseToSignIn: 'Sign in with the following account: ',
+    type: {
+      up: 'Account Password',
+      social: 'Third Party Account'
+    }
   },
   documentation: {
     documentation: 'Documentation',
@@ -40,7 +46,8 @@ export default {
       desc: 'Personal Description',
       oldPassword: 'Old Password',
       newPassword: 'New Password',
-      confirmPassword: 'Confirm Again'
+      confirmPassword: 'Confirm Again',
+      social: 'Third Party Account'
     },
     role: {
       roleName: 'RoleName',
@@ -271,6 +278,16 @@ export default {
     al: 'Ali Style',
     lm: 'Lian Meng',
     ctc: 'Click to select',
-    pleaseInputUrl: 'Please enter a URL'
+    pleaseInputUrl: 'Please enter a URL',
+    bind: 'Bind',
+    unbind: 'Unbind',
+    confirmUnbind: 'Make sure to unbind the third-party account?',
+    unbindSuccess: 'Unbind successfully',
+    bindSuccess: 'Bind successfully',
+    bindLogin: 'Bind & Login',
+    signLogin: 'Sign & Login',
+    current: 'Current ',
+    socialAccount: ' account ',
+    socialTips: ' haven\'t bound any system accounts yet, you can bind system accounts or register a new account and bind.'
   }
 }

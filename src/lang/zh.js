@@ -18,7 +18,13 @@ export default {
     logIn: '立即登录',
     username: '账号',
     password: '密码',
-    code: '验证码'
+    code: '验证码',
+    ortherLoginType: '其他登录方式',
+    chooseToSignIn: '选择以下账号登录：',
+    type: {
+      up: '账号密码登录',
+      social: '第三方账号登录'
+    }
   },
   documentation: {
     documentation: '项目文档',
@@ -40,7 +46,8 @@ export default {
       desc: '个人描述',
       oldPassword: '旧密码',
       newPassword: '新密码',
-      confirmPassword: '再次确认'
+      confirmPassword: '再次确认',
+      social: '第三方账号'
     },
     role: {
       roleName: '角色名称',
@@ -268,6 +275,16 @@ export default {
     al: '阿里系',
     lm: '脸萌',
     ctc: '点击选择',
-    pleaseInputUrl: '请输入URL'
+    pleaseInputUrl: '请输入URL',
+    bind: '绑定',
+    unbind: '解绑',
+    confirmUnbind: '确定解绑该第三方账号？',
+    unbindSuccess: '解绑成功',
+    bindSuccess: '绑定成功',
+    bindLogin: '绑定并登录',
+    signLogin: '注册并登录',
+    current: '当前',
+    socialAccount: '账号',
+    socialTips: '尚未绑定任何系统账户，您可以绑定系统账户或者注册一个新的账户并绑定。'
   }
 }
