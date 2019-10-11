@@ -142,7 +142,7 @@
       </el-dropdown>
     </el-form>
     <span class="login-footer">
-      © 2019 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS 闽ICP备19019240号-1
+      © 2019 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS
     </span>
   </div>
 </template>

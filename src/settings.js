@@ -9,7 +9,7 @@ module.exports = {
   // kibana 控制台地址
   kibanaUrl: 'http://192.168.33.10:5601',
   // 第三方登录接口地址
-  socialLoginUrl: 'http://apicloud.mrbird.cn:8301/auth/social/login',
+  socialLoginUrl: 'http://localhost:8301/auth/social/login',
   // 验证码获取接口地址
-  captchaUrl: 'http://apicloud.mrbird.cn:8301/auth/captcha'
+  captchaUrl: 'http://localhost:8301/auth/captcha'
 }
