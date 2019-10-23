@@ -200,6 +200,7 @@ export default {
       this.batchDelete()
     },
     delete(clientIds) {
+      this.loading = true
       this.$delete(`auth/client`, { clientIds }).then(() => {
         this.$message({
           message: this.$t('tips.deleteSuccess'),

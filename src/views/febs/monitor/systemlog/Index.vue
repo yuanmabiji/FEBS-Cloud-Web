@@ -188,6 +188,7 @@ export default {
       this.$refs.table.clearSelection()
     },
     delete(logIds) {
+      this.loading = true
       this.$delete(`system/log/${logIds}`).then(() => {
         this.$message({
           message: this.$t('tips.deleteSuccess'),

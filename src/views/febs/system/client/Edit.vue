@@ -44,10 +44,10 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button type="warning" plain @click="isVisible = false">
+      <el-button type="warning" plain :loading="buttonLoading" @click="isVisible = false">
         {{ $t('common.cancel') }}
       </el-button>
-      <el-button type="primary" plain @click="submitForm">
+      <el-button type="primary" plain :loading="buttonLoading" @click="submitForm">
         {{ $t('common.confirm') }}
       </el-button>
     </div>
@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       screenWidth: 0,
+      buttonLoading: false,
       width: this.initWidth(),
       client: this.initClient(),
       rules: {
@@ -201,10 +202,12 @@ export default {
     submitForm() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           if (this.type === 'add') {
             // create
             this.client.authorizedGrantTypes = this.client.authorizedGrantTypes.join(',')
             this.$post('auth/client', { ...this.client }).then(() => {
+              this.buttonLoading = false
               this.isVisible = false
               this.$message({
                 message: this.$t('tips.createSuccess'),
@@ -216,6 +219,7 @@ export default {
             // update
             this.client.authorizedGrantTypes = this.client.authorizedGrantTypes.join(',')
             this.$put('auth/client', { ...this.client }).then(() => {
+              this.buttonLoading = false
               this.isVisible = false
               this.$message({
                 message: this.$t('tips.updateSuccess'),

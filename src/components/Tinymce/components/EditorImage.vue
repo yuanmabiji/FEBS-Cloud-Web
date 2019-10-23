@@ -1,8 +1,6 @@
 <template>
   <div class="upload-container">
-    <el-button :style="{background:color,borderColor:color}" icon="el-icon-upload" size="mini" type="primary" @click=" dialogVisible=true">
-      upload
-    </el-button>
+    <el-link type="primary" @click=" dialogVisible=true">upload</el-link>
     <el-dialog :visible.sync="dialogVisible">
       <el-upload
         :multiple="true"
@@ -30,7 +28,6 @@
 </template>
 
 <script>
-// import { getToken } from 'api/qiniu'
 
 export default {
   name: 'EditorSlideUpload',

@@ -57,10 +57,10 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button type="warning" plain @click="isVisible = false">
+      <el-button type="warning" plain :loading="buttonLoading" @click="isVisible = false">
         {{ $t('common.cancel') }}
       </el-button>
-      <el-button type="primary" plain @click="submitForm">
+      <el-button type="primary" plain :loading="buttonLoading" @click="submitForm">
         {{ $t('common.confirm') }}
       </el-button>
     </div>
@@ -87,6 +87,7 @@ export default {
   data() {
     return {
       user: this.initUser(),
+      buttonLoading: false,
       screenWidth: 0,
       width: this.initWidth(),
       depts: [],
@@ -198,10 +199,12 @@ export default {
     submitForm() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           if (!this.user.userId) {
             // create
             this.user.roleId = this.user.roleId.join(',')
             this.$post('system/user', { ...this.user }).then(() => {
+              this.buttonLoading = false
               this.isVisible = false
               this.$message({
                 message: this.$t('tips.createSuccess'),
@@ -214,6 +217,7 @@ export default {
             this.user.roleId = this.user.roleId.join(',')
             this.user.createTime = this.user.modifyTime = this.user.lastLoginTime = null
             this.$put('system/user', { ...this.user }).then(() => {
+              this.buttonLoading = false
               this.isVisible = false
               this.$message({
                 message: this.$t('tips.updateSuccess'),

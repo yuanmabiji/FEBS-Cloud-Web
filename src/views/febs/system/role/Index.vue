@@ -92,7 +92,7 @@
         <el-card class="box-card">
           <el-row>
             <el-col :span="24" style="text-align: right">
-              <el-button type="primary" plain @click="submit">{{ role.roleId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
+              <el-button type="primary" :loading="buttonLoading" plain @click="submit">{{ role.roleId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
             </el-col>
           </el-row>
         </el-card>
@@ -110,6 +110,7 @@ export default {
     return {
       tableKey: 0,
       loading: false,
+      buttonLoading: false,
       list: null,
       selection: [],
       total: 0,
@@ -209,6 +210,7 @@ export default {
       })
     },
     delete(roleIds) {
+      this.loading = true
       this.$delete(`system/role/${roleIds}`).then(() => {
         this.$message({
           message: this.$t('tips.deleteSuccess'),
@@ -220,10 +222,12 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           if (this.role.roleId) {
             this.role.menuIds = this.$refs.permsTree.getCheckedKeys().join(',')
             this.role.createTime = this.role.modifyTime = null
             this.$put('system/role', { ...this.role }).then(() => {
+              this.buttonLoading = false
               this.$message({
                 message: this.$t('tips.updateSuccess'),
                 type: 'success'
@@ -233,6 +237,7 @@ export default {
           } else {
             this.role.menuIds = this.$refs.permsTree.getCheckedKeys().join(',')
             this.$post('system/role', { ...this.role }).then(() => {
+              this.buttonLoading = false
               this.$message({
                 message: this.$t('tips.createSuccess'),
                 type: 'success'

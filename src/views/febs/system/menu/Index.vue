@@ -43,12 +43,17 @@
           <div>
             <el-form ref="form" :model="menu" :rules="rules" label-position="right" label-width="100px">
               <el-form-item :label="$t('table.menu.parentId')" prop="parentId">
-                <el-tooltip class="item" effect="dark" :content="$t('tips.topId')" placement="top-start">
-                  <el-input v-model="menu.parentId" readonly />
-                </el-tooltip>
+                <treeselect
+                  v-model="menu.parentId"
+                  :multiple="false"
+                  :options="menuTree"
+                  :clear-value-text="$t('common.clear')"
+                  placeholder=" "
+                  style="width:100%"
+                />
               </el-form-item>
               <el-form-item :label="$t('table.menu.menuName')" prop="menuName">
-                <el-input v-model="menu.menuName" :readonly="menu.menuId === '' ? false : 'readonly'" />
+                <el-input v-model="menu.menuName" />
               </el-form-item>
               <el-form-item :label="$t('table.menu.type')" prop="type">
                 <el-radio-group v-model="menu.type" :disabled="menu.menuId !== ''">
@@ -79,7 +84,7 @@
         <el-card class="box-card" style="margin-top: -2rem;">
           <el-row>
             <el-col :span="24" style="text-align: right">
-              <el-button type="primary" plain @click="submit">{{ menu.menuId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
+              <el-button type="primary" plain :loading="buttonLoading" @click="submit">{{ menu.menuId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
             </el-col>
           </el-row>
         </el-card>
@@ -94,13 +99,16 @@
 </template>
 <script>
 import Icons from './Icons'
+import Treeselect from '@riophae/vue-treeselect'
+import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 
 export default {
   name: 'MenuManage',
-  components: { Icons },
+  components: { Icons, Treeselect },
   data() {
     return {
       iconVisible: false,
+      buttonLoading: false,
       selection: [],
       menuTree: [],
       menuName: '',
@@ -129,7 +137,7 @@ export default {
       return {
         menuId: '',
         menuName: '',
-        parentId: 0,
+        parentId: null,
         path: '',
         component: '',
         perms: '',
@@ -148,9 +156,18 @@ export default {
       return data.label.indexOf(value) !== -1
     },
     nodeClick(data, node, v) {
-      this.menu = { ...data }
-      this.menu.menuName = this.menu.label
-      this.menu.menuId = this.menu.id
+      this.menu.parentId = data.parentId
+      if (this.menu.parentId === '0') {
+        this.menu.parentId = null
+      }
+      this.menu.orderNum = data.orderNum
+      this.menu.type = data.type
+      this.menu.perms = data.perms
+      this.menu.path = data.path
+      this.menu.component = data.component
+      this.menu.icon = data.icon
+      this.menu.menuName = data.label
+      this.menu.menuId = data.id
       this.$refs.form.clearValidate()
     },
     handleNumChange(val) {
@@ -166,9 +183,11 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           this.menu.createTime = this.menu.modifyTime = null
           if (this.menu.menuId) {
             this.$put('system/menu', { ...this.menu }).then(() => {
+              this.buttonLoading = false
               this.$message({
                 message: this.$t('tips.updateSuccess'),
                 type: 'success'
@@ -177,6 +196,7 @@ export default {
             })
           } else {
             this.$post('system/menu', { ...this.menu }).then(() => {
+              this.buttonLoading = false
               this.$message({
                 message: this.$t('tips.createSuccess'),
                 type: 'success'
@@ -199,17 +219,6 @@ export default {
     },
     add() {
       this.resetForm()
-      const checked = this.$refs.menuTree.getCheckedKeys()
-      if (checked.length > 1) {
-        this.$message({
-          message: this.$t('tips.onlyChooseOne'),
-          type: 'warning'
-        })
-      } else if (checked.length > 0) {
-        this.menu.parentId = checked[0]
-      } else {
-        this.menu.parentId = 0
-      }
     },
     deleteMenu() {
       const checked = this.$refs.menuTree.getCheckedKeys()

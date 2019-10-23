@@ -13,8 +13,9 @@
         <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="generateTitle(item.meta.title)" />
       </template>
       <sidebar-item
-        v-for="child in item.children"
+        v-for="(child, index) in item.children"
         :key="child.path"
+        :class="{'has-child' : index !== 0 }"
         :is-nest="true"
         :item="child"
         :base-path="resolvePath(child.path)"

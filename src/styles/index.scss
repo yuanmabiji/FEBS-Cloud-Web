@@ -246,3 +246,27 @@ aside {
 .no-perm {
   margin-top: -6px
 }
+.el-input__inner {
+  height: 38px;
+  line-height: 38px;
+}
+.el-button {
+  padding: 10px 20px;
+}
+.el-table th {
+  padding: 9px 0;
+}
+.el-input-number {
+  line-height: 36px;
+}
+.menu-wrapper.nest-menu .el-submenu__title {
+  padding-left: 63px !important;
+}
+.vue-treeselect__placeholder, .vue-treeselect__single-value {
+  line-height: 40px !important;
+  height: 40px !important;
+  padding-left: 10px !important;
+}
+.vue-treeselect__single-value {
+  color: #606266 !important;
+}

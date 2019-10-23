@@ -56,7 +56,7 @@ export default {
       perms: '角色权限'
     },
     menu: {
-      parentId: '上级ID',
+      parentId: '上级菜单',
       menuName: '名称',
       type: '类型',
       icon: '图标',
@@ -67,7 +67,7 @@ export default {
     },
     dept: {
       deptName: '部门名称',
-      parentId: '上级ID',
+      parentId: '上级部门',
       orderNum: '排序'
     },
     systemLog: {

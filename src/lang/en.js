@@ -56,7 +56,7 @@ export default {
       perms: 'Permissions'
     },
     menu: {
-      parentId: 'ParentId',
+      parentId: 'Parent',
       menuName: 'Name',
       type: 'Type',
       icon: 'Icon',
@@ -67,7 +67,7 @@ export default {
     },
     dept: {
       deptName: 'DeptName',
-      parentId: 'ParentId',
+      parentId: 'Parent',
       orderNum: 'Order'
     },
     systemLog: {

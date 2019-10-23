@@ -43,12 +43,17 @@
           <div>
             <el-form ref="form" :model="dept" :rules="rules" label-position="right" label-width="100px">
               <el-form-item :label="$t('table.dept.parentId')" prop="parentId">
-                <el-tooltip class="item" effect="dark" :content="$t('tips.topId')" placement="top-start">
-                  <el-input v-model="dept.parentId" readonly />
-                </el-tooltip>
+                <treeselect
+                  v-model="dept.parentId"
+                  :multiple="false"
+                  :options="deptTree"
+                  :clear-value-text="$t('common.clear')"
+                  placeholder=" "
+                  style="width:100%"
+                />
               </el-form-item>
               <el-form-item :label="$t('table.dept.deptName')" prop="deptName">
-                <el-input v-model="dept.deptName" :readonly="dept.deptId === '' ? false : 'readonly'" />
+                <el-input v-model="dept.deptName" />
               </el-form-item>
               <el-form-item :label="$t('table.dept.orderNum')" prop="orderNum">
                 <el-input-number v-model="dept.orderNum" :min="0" :max="100" @change="handleNumChange" />
@@ -59,7 +64,7 @@
         <el-card class="box-card" style="margin-top: -2rem;">
           <el-row>
             <el-col :span="24" style="text-align: right">
-              <el-button type="primary" plain @click="submit">{{ dept.deptId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
+              <el-button type="primary" plain :loading="buttonLoading" @click="submit">{{ dept.deptId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
             </el-col>
           </el-row>
         </el-card>
@@ -68,11 +73,16 @@
   </div>
 </template>
 <script>
+import Treeselect from '@riophae/vue-treeselect'
+import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+
 export default {
   name: 'DeptManager',
+  components: { Treeselect },
   data() {
     return {
       deptName: '',
+      buttonLoading: false,
       deptTree: [],
       dept: this.initDept(),
       rules: {
@@ -91,7 +101,7 @@ export default {
       return {
         deptId: '',
         deptName: '',
-        parentId: 0,
+        parentId: null,
         orderNum: 0
       }
     },
@@ -113,24 +123,17 @@ export default {
       return data.label.indexOf(value) !== -1
     },
     nodeClick(data) {
-      this.dept = { ...data }
-      this.dept.deptName = this.dept.label
-      this.dept.deptId = this.dept.id
+      this.dept.parentId = data.parentId
+      if (this.dept.parentId === '0') {
+        this.dept.parentId = null
+      }
+      this.dept.orderNum = data.orderNum
+      this.dept.deptName = data.label
+      this.dept.deptId = data.id
       this.$refs.form.clearValidate()
     },
     add() {
       this.resetForm()
-      const checked = this.$refs.deptTree.getCheckedKeys()
-      if (checked.length > 1) {
-        this.$message({
-          message: this.$t('tips.onlyChooseOne'),
-          type: 'warning'
-        })
-      } else if (checked.length > 0) {
-        this.dept.parentId = checked[0]
-      } else {
-        this.dept.parentId = 0
-      }
     },
     deleteDept() {
       const checked = this.$refs.deptTree.getCheckedKeys()
@@ -169,9 +172,11 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           this.dept.createTime = this.dept.modifyTime = null
           if (this.dept.deptId) {
             this.$put('system/dept', { ...this.dept }).then(() => {
+              this.buttonLoading = false
               this.$message({
                 message: this.$t('tips.updateSuccess'),
                 type: 'success'
@@ -180,6 +185,7 @@ export default {
             })
           } else {
             this.$post('system/dept', { ...this.dept }).then(() => {
+              this.buttonLoading = false
               this.$message({
                 message: this.$t('tips.createSuccess'),
                 type: 'success'
@@ -217,5 +223,10 @@ export default {
       padding: 10px 20px !important;
       border-bottom: 1px solid #f1f1f1 !important;
     }
+  }
+</style>
+<style lang="scss">
+  .vue-treeselect__menu {
+    max-height: 165px !important;
   }
 </style>

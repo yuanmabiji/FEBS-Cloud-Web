@@ -14,6 +14,7 @@
       >
         {{ generateTitle(tag.title) }}
         <span v-if="!tag.meta.affix" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        <span v-else class="el-icon-none" />
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
@@ -218,12 +219,17 @@ export default {
       border-left: 1px solid #f1f1f1;
       color: #999;
       background: #fff;
-      padding: 0 20px;
+      padding: 0 5px 0 20px;
       font-size: 13px;
       transition: all .3s;
+      .el-icon-none {
+        width: 16px
+      }
       &:hover {
         color: #495060;
         & .el-icon-close {
+          font-size: 1rem;
+          font-weight: bold;
           color: red;
         }
       }

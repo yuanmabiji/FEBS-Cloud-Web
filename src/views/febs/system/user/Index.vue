@@ -292,6 +292,7 @@ export default {
       this.$refs.table.clearSelection()
     },
     delete(userIds) {
+      this.loading = true
       this.$delete(`system/user/${userIds}`).then(() => {
         this.$message({
           message: this.$t('tips.deleteSuccess'),

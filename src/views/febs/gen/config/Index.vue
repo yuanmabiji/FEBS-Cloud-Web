@@ -35,7 +35,7 @@
         <el-input v-model="config.trimValue" />
       </el-form-item>
       <el-form-item v-has-permission="['gen:config:update']">
-        <el-button type="primary" plain @click="submit">{{ $t('common.edit') }}</el-button>
+        <el-button type="primary" plain :loading="buttonLoading" @click="submit">{{ $t('common.edit') }}</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       config: this.initConfig(),
+      buttonLoading: false,
       rules: {
         author: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
@@ -120,7 +121,9 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           this.$post('system/generatorConfig', { ...this.config }).then(() => {
+            this.buttonLoading = false
             this.$message({
               message: this.$t('tips.updateSuccess'),
               type: 'success'
