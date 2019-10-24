@@ -27,7 +27,7 @@
       <el-input v-model="user.description" type="textarea" rows="3" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" plain @click="submit">{{ $t('common.edit') }}</el-button>
+      <el-button type="primary" plain :loading="buttonLoading" @click="submit">{{ $t('common.edit') }}</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       depts: [],
+      buttonLoading: false,
       deptName: '',
       change: false,
       rules: {
@@ -76,9 +77,11 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           const temp = { ...this.user }
           temp.lastLoginTime = temp.modifyTime = temp.createTime = null
           this.$put('system/user/profile', { ...temp }).then(() => {
+            this.buttonLoading = false
             this.$message({
               message: this.$t('tips.updateSuccess'),
               type: 'success'

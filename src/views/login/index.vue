@@ -151,7 +151,6 @@
 import LangSelect from '@/components/LangSelect'
 import db from '@/utils/localstorage'
 import { randomNum } from '@/utils'
-import { socialLoginUrl, captchaUrl } from '@/settings'
 import axios from 'axios'
 
 export default {
@@ -160,6 +159,8 @@ export default {
   data() {
     return {
       tabActiveName: 'bindLogin',
+      codeUrl: `${process.env.VUE_APP_BASE_API}auth/captcha`,
+      socialLoginUrl: `${process.env.VUE_APP_BASE_API}auth/social/login`,
       login: {
         type: 'up'
       },
@@ -218,7 +219,7 @@ export default {
     getCodeImage() {
       axios({
         method: 'GET',
-        url: `${captchaUrl}?key=${this.randomId}`,
+        url: `${this.codeUrl}?key=${this.randomId}`,
         responseType: 'arraybuffer'
       }).then(res => {
         return 'data:image/png;base64,' + btoa(
@@ -248,7 +249,7 @@ export default {
       return require(`@/assets/logo/${logo}`)
     },
     socialLogin(oauthType) {
-      const url = `${socialLoginUrl}/${oauthType}/login`
+      const url = `${this.socialLoginUrl}/${oauthType}/login`
       window.open(url, 'newWindow', `resizable=yes, height=${this.page.height}, width=${this.page.width}, top=10%, left=10%, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no`)
       window.addEventListener('message', this.resolveSocialLogin, false)
     },
@@ -384,8 +385,8 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "login-scope";
+  @import "login";
 </style>
 <style lang="scss" scoped>
-  @import "login";
+  @import "login-scoped";
 </style>

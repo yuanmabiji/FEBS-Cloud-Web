@@ -10,7 +10,7 @@
       <el-input v-model="p.confirmPassword" type="password" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" plain @click="submit">{{ $t('common.edit') }}</el-button>
+      <el-button type="primary" plain :loading="buttonLoading" @click="submit">{{ $t('common.edit') }}</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -24,6 +24,7 @@ export default {
   },
   data() {
     return {
+      buttonLoading: false,
       p: {
         oldPassword: '',
         newPassword: '',
@@ -68,10 +69,12 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          this.buttonLoading = true
           this.$put('system/user/password', {
             password: this.p.newPassword,
             username: this.username
           }).then(() => {
+            this.buttonLoading = false
             this.$message({
               message: this.$t('tips.updateSuccess'),
               type: 'success'
