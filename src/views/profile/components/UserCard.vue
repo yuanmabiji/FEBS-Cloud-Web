@@ -50,7 +50,6 @@
 <script>
 import PanThumb from '@/components/PanThumb'
 import Avatar from './Avatar'
-import { socialLoginUrl } from '@/settings'
 
 export default {
   components: { PanThumb, Avatar },
@@ -66,6 +65,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      socialLoginUrl: `${process.env.VUE_APP_BASE_API}auth/social/login`,
       logo: [
         { img: 'gitee.png', name: 'gitee', bind: false, radius: true },
         { img: 'github.png', name: 'github', bind: false, radius: true },
@@ -119,7 +119,7 @@ export default {
     },
     bind(name) {
       this.oauthType = name
-      const url = `${socialLoginUrl}/${name}/bind`
+      const url = `${this.socialLoginUrl}/${name}/bind`
       window.open(url, 'newWindow', `height=${this.page.height}, width=${this.page.width}, top=10%, left=10%, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no`)
       window.addEventListener('message', this.resolveBindResult, false)
     },
