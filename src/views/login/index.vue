@@ -152,6 +152,7 @@ import LangSelect from '@/components/LangSelect'
 import db from '@/utils/localstorage'
 import { randomNum } from '@/utils'
 import axios from 'axios'
+import { socialLoginUrl } from '@/settings'
 
 export default {
   name: 'Login',
@@ -160,7 +161,7 @@ export default {
     return {
       tabActiveName: 'bindLogin',
       codeUrl: `${process.env.VUE_APP_BASE_API}auth/captcha`,
-      socialLoginUrl: `${process.env.VUE_APP_BASE_API}auth/social/login`,
+      socialLoginUrl: socialLoginUrl,
       login: {
         type: 'up'
       },
