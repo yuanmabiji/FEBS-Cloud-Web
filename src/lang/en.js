@@ -210,7 +210,9 @@ export default {
       c: 'Authentication server resource server separation, easy to expand',
       d: 'Front-end separation architecture for increased efficiency',
       e: 'Integrate multiple monitoring to escort microservices',
-      f: 'Provide detailed documentation and teach you how to build it'
+      f: 'Provide detailed documentation and teach you how to build it',
+      g: 'Build a highly available microservices cluster by K8S',
+      h: 'Integrated RocketMQ, TX-LCN, Seata distributed transaction control'
     },
     view: 'Detail',
     tips: 'Tips',
