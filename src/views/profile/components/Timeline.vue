@@ -15,12 +15,6 @@
 
 <script>
 export default {
-  props: {
-    username: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     return {
       timeline: []
@@ -31,7 +25,7 @@ export default {
   },
   methods: {
     getTimeLine() {
-      this.$get(`system/loginLog/${this.username}`).then((r) => {
+      this.$get('system/loginLog/currentUser').then((r) => {
         this.timeline = r.data.data
       })
     }

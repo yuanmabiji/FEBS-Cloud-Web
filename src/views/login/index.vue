@@ -176,8 +176,8 @@ export default {
         { img: 'microsoft.png', name: 'microsoft', radius: false }
       ],
       loginForm: {
-        username: 'scott',
-        password: '1234qwer',
+        username: '',
+        password: '',
         bindUsername: '',
         bindPassword: '',
         signUsername: '',
@@ -275,7 +275,7 @@ export default {
       } else if (data.message === 'social_login_success') {
         that.saveLoginData(data.data)
         that.getUserDetailInfo()
-        that.loginSuccessCallback(data.username)
+        that.loginSuccessCallback()
       } else {
         // do nothing
       }
@@ -298,7 +298,7 @@ export default {
           const data = r.data.data
           this.saveLoginData(data)
           this.getUserDetailInfo()
-          this.loginSuccessCallback(that.loginForm.bindUsername)
+          this.loginSuccessCallback()
         }).catch((error) => {
           console.error(error)
           that.loading = false
@@ -323,7 +323,7 @@ export default {
           const data = r.data.data
           this.saveLoginData(data)
           this.getUserDetailInfo()
-          this.loginSuccessCallback(that.loginForm.signUsername)
+          this.loginSuccessCallback()
         }).catch((error) => {
           console.error(error)
           that.loading = false
@@ -347,7 +347,7 @@ export default {
           const data = r.data
           this.saveLoginData(data)
           this.getUserDetailInfo()
-          this.loginSuccessCallback(that.loginForm.username)
+          this.loginSuccessCallback()
         }).catch((error) => {
           console.error(error)
           that.loading = false
@@ -380,8 +380,8 @@ export default {
         this.loading = false
       })
     },
-    loginSuccessCallback(username) {
-      this.$get(`system/user/success/${username}`).catch((e) => { console.log(e) })
+    loginSuccessCallback() {
+      this.$get('system/user/success/').catch((e) => { console.log(e) })
     }
   }
 }

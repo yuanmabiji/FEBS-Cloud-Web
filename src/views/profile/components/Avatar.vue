@@ -106,10 +106,7 @@ export default {
         return
       }
       this.updating = true
-      this.$put('system/user/avatar', {
-        username: this.$store.state.account.user.username,
-        avatar
-      }).then(() => {
+      this.$put('system/user/avatar', { avatar }).then(() => {
         this.$emit('success', avatar)
         this.updating = false
       }).catch((r) => {

@@ -9,13 +9,13 @@
           <el-card>
             <el-tabs v-model="activeTab">
               <el-tab-pane :label="$t('common.timeline')" name="timeline">
-                <timeline :username="user.username" />
+                <timeline />
               </el-tab-pane>
               <el-tab-pane :label="$t('common.account')" name="account">
                 <account :user="user" />
               </el-tab-pane>
               <el-tab-pane :label="$t('common.password')" name="password">
-                <password :username="user.username" />
+                <password />
               </el-tab-pane>
             </el-tabs>
           </el-card>

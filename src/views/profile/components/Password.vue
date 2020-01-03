@@ -16,12 +16,6 @@
 </template>
 <script>
 export default {
-  props: {
-    username: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     return {
       buttonLoading: false,
@@ -35,8 +29,7 @@ export default {
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
           { validator: (rule, value, callback) => {
             this.$get('system/user/password/check', {
-              password: value,
-              username: this.username
+              password: value
             }).then((r) => {
               if (r.data) {
                 callback()
@@ -71,8 +64,7 @@ export default {
         if (valid) {
           this.buttonLoading = true
           this.$put('system/user/password', {
-            password: this.p.newPassword,
-            username: this.username
+            password: this.p.newPassword
           }).then(() => {
             this.buttonLoading = false
             this.$message({
