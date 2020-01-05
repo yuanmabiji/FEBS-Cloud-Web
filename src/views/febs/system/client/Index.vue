@@ -8,7 +8,7 @@
       <el-button class="filter-item" type="warning" plain @click="reset">
         {{ $t('table.reset') }}
       </el-button>
-      <el-dropdown v-has-any-permission="['user:add','user:delete','user:reset','user:export']" trigger="click" class="filter-item">
+      <el-dropdown v-has-any-permission="['client:add','client:delete','client:reset','client:export']" trigger="click" class="filter-item">
         <el-button>
           {{ $t('table.more') }}<i class="el-icon-arrow-down el-icon--right" />
         </el-button>
