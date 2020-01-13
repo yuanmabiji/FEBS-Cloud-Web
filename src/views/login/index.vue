@@ -381,7 +381,7 @@ export default {
       })
     },
     loginSuccessCallback() {
-      this.$get('system/user/success/').catch((e) => { console.log(e) })
+      this.$get('system/user/success').catch((e) => { console.log(e) })
     }
   }
 }
