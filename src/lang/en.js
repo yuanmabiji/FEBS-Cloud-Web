@@ -179,7 +179,7 @@ export default {
     confirmRestPassword: 'Make sure to reset the selected user password?',
     resetPasswordSuccess: 'The selected user password reset has been reset to 1234qwer',
     getCodeImageFailed: 'Failed to get image verification code',
-    tooManyRequest: 'Getting the authentication code is too frequent. Please try again in 1 minute',
+    tooManyRequest: 'Getting the authentication code is too frequent. Please try again later',
     clientOriginSecret: 'The original password of the client is: '
   },
   rules: {

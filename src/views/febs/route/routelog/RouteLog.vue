@@ -84,7 +84,6 @@
       </el-table-column>
       <el-table-column :label="$t('table.operation')" align="center" min-width="60px" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <i class="el-icon-setting table-operation" style="color: #2db7f5;" @click="edit(row)" />
           <i class="el-icon-delete table-operation" style="color: #f50;" @click="singleDelete(row)" />
         </template>
       </el-table-column>

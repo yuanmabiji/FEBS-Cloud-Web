@@ -179,7 +179,7 @@ export default {
     confirmRestPassword: '确定重置所选用户密码？',
     resetPasswordSuccess: '所选用户密码重置已被重置为1234qwer',
     getCodeImageFailed: '获取图形验证码失败',
-    tooManyRequest: '获取验证码过于频繁，请1分钟后再试',
+    tooManyRequest: '获取验证码过于频繁，请稍后再试',
     clientOriginSecret: '该客户端原始密码为：'
   },
   rules: {
