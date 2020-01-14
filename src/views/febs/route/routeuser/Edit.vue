@@ -8,13 +8,13 @@
     :visible.sync="isVisible"
   >
     <el-form ref="form" :model="user" :rules="rules" label-position="right" label-width="100px">
-      <el-form-item :label="$t('table.user.username')" prop="username">
+      <el-form-item :label="$t('table.routeUser.username')" prop="username">
         <el-input v-model="user.username" :readonly="user.id === '' ? false : 'readonly'" />
       </el-form-item>
-      <el-form-item v-if="user.id === ''" :label="$t('table.user.password')" prop="password">
+      <el-form-item v-if="user.id === ''" :label="$t('table.routeUser.password')" prop="password">
         <el-input v-model="user.password" type="password" />
       </el-form-item>
-      <el-form-item :label="$t('table.user.role')" prop="roles">
+      <el-form-item :label="$t('table.routeUser.perm')" prop="roles">
         <el-select v-model="user.roles" multiple value="" placeholder="" style="width:100%">
           <el-option
             v-for="item in roles"

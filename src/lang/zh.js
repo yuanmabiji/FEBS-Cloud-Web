@@ -115,6 +115,76 @@ export default {
       field3: '字段3',
       createTime: '导入时间'
     },
+    routeUser: {
+      tips: '网关管理用户账号列表，权限分为普通用户（user）和管理用户（admin）',
+      username: '用户名',
+      perm: '权限',
+      createTime: '创建时间',
+      password: '密码'
+    },
+    routeLog: {
+      tips: '网关转发请求日志，这些为未被限流或黑名单规则拦截的请求',
+      ip: '请求IP',
+      targetServer: '目标服务',
+      requestMethod: '请求方法',
+      requestTime: '请求时间',
+      requestUri: '请求URI',
+      targetUri: '目标URI',
+      location: '请求地址'
+    },
+    rateLimitRule: {
+      tips: '定义网关限流规则，不符合规则的请求将被拦截，拦截记录可以通过限流日志查看',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      limitFrom: '限制时间起',
+      allTheTime: '所有时间',
+      limitTo: '限制时间止',
+      count: '请求次数',
+      period: '时间周期（秒）',
+      createTime: '创建时间',
+      nst: '不支持通配符',
+      status: '规则状态',
+      timeLimit: '时间限制',
+      timeRange: '时间范围'
+    },
+    rateLimitLog: {
+      tips: '展示被限流规则拦截的请求日志',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      createTime: '请求时间',
+      ip: '请求IP',
+      location: '请求地址'
+    },
+    blackList: {
+      tips: '定义网关请求黑名单',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      createTime: '创建时间',
+      ip: '请求IP',
+      location: '请求地址',
+      allIp: '所有IP',
+      limitFrom: '限制时间起',
+      allTheTime: '所有时间',
+      limitTo: '限制时间止',
+      status: '规则状态',
+      st: '支持通配符',
+      timeLimit: '时间限制',
+      timeRange: '时间范围'
+    },
+    blockLog: {
+      tips: '展示被限流规则拦截的请求日志',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      createTime: '请求时间',
+      ip: '请求IP',
+      location: '请求地址'
+    },
+    routeLogin: {
+      needLogin: '网关管理模块操作需要认证，',
+      toLogin: '点击认证',
+      title: 'FEBS 网关管理认证',
+      login: '认证'
+    },
     refresh: '刷新',
     operation: '操作',
     search: '搜索',
@@ -180,7 +250,8 @@ export default {
     resetPasswordSuccess: '所选用户密码重置已被重置为1234qwer',
     getCodeImageFailed: '获取图形验证码失败',
     tooManyRequest: '获取验证码过于频繁，请稍后再试',
-    clientOriginSecret: '该客户端原始密码为：'
+    clientOriginSecret: '该客户端原始密码为：',
+    sameRule: '已存在相同的规则'
   },
   rules: {
     require: '不能为空',
@@ -223,6 +294,8 @@ export default {
     edit: '修改',
     yes: '是',
     no: '否',
+    open: '开启',
+    close: '关闭',
     sex: {
       male: '男性',
       female: '女性',

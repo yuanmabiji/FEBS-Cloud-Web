@@ -2,12 +2,12 @@
   <div class="app-container">
     <el-alert
       style="margin: -1rem 0 1.2rem 0;padding: 1rem;"
-      title="网关管理用户账号列表，权限分为普通用户（user）和管理用户（admin）"
+      :title="$t('table.routeUser.tips')"
       type="info"
       :closable="false"
     />
     <div class="filter-container">
-      <el-input v-model="queryParams.username" placeholder="用户名" class="filter-item search-item" />
+      <el-input v-model="queryParams.username" :placeholder="$t('table.routeUser.username')" class="filter-item search-item" />
       <el-button class="filter-item" type="primary" plain @click="search">
         {{ $t('table.search') }}
       </el-button>
@@ -36,17 +36,17 @@
       @sort-change="sortChange"
     >
       <el-table-column type="selection" align="center" width="40px" />
-      <el-table-column label="用户名" prop="username" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeUser.username')" prop="username" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.username }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="权限" prop="roles" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeUser.perm')" prop="roles" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.roles }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
+      <el-table-column :label="$t('table.routeUser.createTime')" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>

@@ -7,11 +7,11 @@
     :close-on-press-escape="false"
     :visible.sync="isVisible"
   >
-    <el-form ref="form" :model="rateLimitRule" :rules="rules" label-position="right" label-width="100px">
-      <el-form-item label="请求URI" prop="requestUri">
-        <el-input v-model="rateLimitRule.requestUri" :readonly="!rateLimitRule.id ? false : 'readonly'" placeholder="不支持通配符" />
+    <el-form ref="form" :model="rateLimitRule" :rules="rules" label-position="right" label-width="129px">
+      <el-form-item :label="$t('table.rateLimitRule.requestUri')" prop="requestUri">
+        <el-input v-model="rateLimitRule.requestUri" :readonly="!rateLimitRule.id ? false : 'readonly'" :placeholder="$t('table.rateLimitRule.nst')" />
       </el-form-item>
-      <el-form-item label="请求方法" prop="requestMethod">
+      <el-form-item :label="$t('table.rateLimitRule.requestMethod')" prop="requestMethod">
         <el-select v-model="rateLimitRule.requestMethod" :disabled="!rateLimitRule.id ? false : 'disabled'" value="" placeholder="" style="width:100%">
           <el-option
             v-for="item in requestMethods"
@@ -21,39 +21,39 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="请求次数" prop="count">
+      <el-form-item :label="$t('table.rateLimitRule.count')" prop="count">
         <el-input v-model="rateLimitRule.count" />
       </el-form-item>
-      <el-form-item label="时间周期" prop="intervalSec">
+      <el-form-item :label="$t('table.rateLimitRule.period')" prop="intervalSec">
         <el-input v-model="rateLimitRule.intervalSec" />
       </el-form-item>
-      <el-form-item label="规则状态" prop="status">
+      <el-form-item :label="$t('table.rateLimitRule.status')" prop="status">
         <el-switch
           v-model="rateLimitRule.status"
-          active-text="有效"
-          inactive-text="禁用"
+          :active-text="$t('common.status.valid')"
+          :inactive-text="$t('common.status.invalid')"
           active-value="1"
           inactive-value="0"
         />
       </el-form-item>
-      <el-form-item label="时间限制">
+      <el-form-item :label="$t('table.rateLimitRule.timeLimit')">
         <el-switch
           v-model="rateLimitRule.timeLimit"
-          active-text="开启"
-          inactive-text="关闭"
+          :active-text="$t('common.open')"
+          :inactive-text="$t('common.close')"
           active-value="1"
           inactive-value="0"
         />
       </el-form-item>
-      <el-form-item v-if="rateLimitRule.timeLimit === '1'" label="时间范围" prop="limitTime">
+      <el-form-item v-if="rateLimitRule.timeLimit === '1'" :label="$t('table.rateLimitRule.timeRange')" prop="limitTime">
         <el-time-picker
           v-model="rateLimitRule.limitFrom"
-          placeholder="时间限制起"
+          :placeholder="$t('table.rateLimitRule.limitFrom')"
           value-format="HH:mm:ss"
         />
         <el-time-picker
           v-model="rateLimitRule.limitTo"
-          placeholder="时间限制止"
+          :placeholder="$t('table.rateLimitRule.limitTo')"
           value-format="HH:mm:ss"
         />
       </el-form-item>
@@ -109,7 +109,7 @@ export default {
                 requestMethod: this.rateLimitRule.requestMethod
               }).then((r) => {
                 if (r.data && r.data.length) {
-                  callback('已存在相同的规则')
+                  callback(this.$t('tips.sameRule'))
                 } else {
                   callback()
                 }
@@ -179,9 +179,9 @@ export default {
       if (this.screenWidth < 991) {
         return '90%'
       } else if (this.screenWidth < 1400) {
-        return '35%'
+        return '45%'
       } else {
-        return '600px'
+        return '700px'
       }
     },
     setRateLimitRule(val) {

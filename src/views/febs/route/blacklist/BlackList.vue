@@ -2,14 +2,14 @@
   <div class="app-container">
     <el-alert
       style="margin: -1rem 0 1.2rem 0;padding: 1rem;"
-      title="定义网关请求黑名单"
+      :title="$t('table.blackList.tips')"
       type="info"
       :closable="false"
     />
     <div class="filter-container">
-      <el-input v-model="queryParams.ip" placeholder="请求IP" class="filter-item search-item" />
-      <el-input v-model="queryParams.requestUri" placeholder="请求URI" class="filter-item search-item" />
-      <el-input v-model="queryParams.requestMethod" placeholder="请求方法" class="filter-item search-item" />
+      <el-input v-model="queryParams.ip" :placeholder="$t('table.blackList.ip')" class="filter-item search-item" />
+      <el-input v-model="queryParams.requestUri" :placeholder="$t('table.blackList.requestUri')" class="filter-item search-item" />
+      <el-input v-model="queryParams.requestMethod" :placeholder="$t('table.blackList.requestMethod')" class="filter-item search-item" />
       <el-button class="filter-item" type="primary" plain @click="search">
         {{ $t('table.search') }}
       </el-button>
@@ -38,40 +38,40 @@
       @sort-change="sortChange"
     >
       <el-table-column type="selection" align="center" width="40px" />
-      <el-table-column label="请求IP" prop="ip" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.ip')" prop="ip" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.ip ? scope.row.ip : '所有IP' }}</span>
+          <span>{{ scope.row.ip ? scope.row.ip : $t('table.blackList.allIp') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求URI" prop="requestUri" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.requestUri')" prop="requestUri" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.requestUri }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求方法" prop="requestMethod" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.requestMethod')" prop="requestMethod" :show-overflow-tooltip="true" align="center">
         <template slot-scope="{row}">
           <el-tag :type="row.requestMethod | requestMethodFilter">
             {{ row.requestMethod }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="限制时间起" prop="limitFrom" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.limitFrom')" prop="limitFrom" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.limitFrom ? scope.row.limitFrom : '所有时间' }}</span>
+          <span>{{ scope.row.limitFrom ? scope.row.limitFrom : $t('table.blackList.allTheTime') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="限制时间止" prop="limitTo" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.limitTo')" prop="limitTo" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.limitTo ? scope.row.limitTo : '所有时间' }}</span>
+          <span>{{ scope.row.limitTo ? scope.row.limitTo : $t('table.blackList.allTheTime') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="IP地址" prop="location" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.ip')" prop="location" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.location }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('table.user.status')"
+        :label="$t('table.blackList.status')"
         :filters="[{ text: $t('common.status.valid'), value: '1' }, { text: $t('common.status.invalid'), value: '0' }]"
         :filter-method="filterStatus"
         class-name="status-col"
@@ -82,7 +82,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
+      <el-table-column :label="$t('table.blackList.createTime')" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>

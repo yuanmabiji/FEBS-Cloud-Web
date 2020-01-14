@@ -2,13 +2,13 @@
   <div class="app-container">
     <el-alert
       style="margin: -1rem 0 1.2rem 0;padding: 1rem;"
-      title="定义网关限流规则，不符合规则的请求将被拦截，拦截记录可以通过限流日志查看"
+      :title="$t('table.rateLimitRule.tips')"
       type="info"
       :closable="false"
     />
     <div class="filter-container">
-      <el-input v-model="queryParams.requestUri" placeholder="请求URI" class="filter-item search-item" />
-      <el-input v-model="queryParams.requestMethod" placeholder="请求方法" class="filter-item search-item" />
+      <el-input v-model="queryParams.requestUri" :placeholder="$t('table.rateLimitRule.requestUri')" class="filter-item search-item" />
+      <el-input v-model="queryParams.requestMethod" :placeholder="$t('table.rateLimitRule.requestMethod')" class="filter-item search-item" />
       <el-button class="filter-item" type="primary" plain @click="search">
         {{ $t('table.search') }}
       </el-button>
@@ -37,40 +37,40 @@
       @sort-change="sortChange"
     >
       <el-table-column type="selection" align="center" width="40px" />
-      <el-table-column label="请求URI" prop="requestUri" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.rateLimitRule.requestUri')" prop="requestUri" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.requestUri }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求方法" prop="requestMethod" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.rateLimitRule.requestMethod')" prop="requestMethod" :show-overflow-tooltip="true" align="center">
         <template slot-scope="{row}">
           <el-tag :type="row.requestMethod | requestMethodFilter">
             {{ row.requestMethod }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="限制时间起" prop="limitFrom" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.rateLimitRule.limitFrom')" prop="limitFrom" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.limitFrom ? scope.row.limitFrom : '所有时间' }}</span>
+          <span>{{ scope.row.limitFrom ? scope.row.limitFrom : $t('table.rateLimitRule.allTheTime') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="限制时间止" prop="limitTo" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.rateLimitRule.limitTo')" prop="limitTo" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.limitTo ? scope.row.limitTo : '所有时间' }}</span>
+          <span>{{ scope.row.limitTo ? scope.row.limitTo : $t('table.rateLimitRule.allTheTime') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="次数" prop="count" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.rateLimitRule.count')" prop="count" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.count }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="时间周期（秒）" prop="intervalSec" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.rateLimitRule.period')" prop="intervalSec" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.intervalSec }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('table.user.status')"
+        :label="$t('table.rateLimitRule.status')"
         :filters="[{ text: $t('common.status.valid'), value: '1' }, { text: $t('common.status.invalid'), value: '0' }]"
         :filter-method="filterStatus"
         class-name="status-col"
@@ -81,7 +81,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
+      <el-table-column :label="$t('table.rateLimitRule.createTime')" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>

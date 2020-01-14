@@ -7,14 +7,14 @@
     :close-on-press-escape="false"
     :visible.sync="isVisible"
   >
-    <el-form ref="form" :model="blackList" :rules="rules" label-position="right" label-width="100px">
-      <el-form-item label="请求IP" prop="ip">
+    <el-form ref="form" :model="blackList" :rules="rules" label-position="right" label-width="129px">
+      <el-form-item :label="$t('table.blackList.ip')" prop="ip">
         <el-input v-model="blackList.ip" :readonly="!blackList.id ? false : 'readonly'" />
       </el-form-item>
-      <el-form-item label="请求URI" prop="requestUri">
-        <el-input v-model="blackList.requestUri" :readonly="!blackList.id ? false : 'readonly'" placeholder="支持通配符" />
+      <el-form-item :label="$t('table.blackList.requestUri')" prop="requestUri">
+        <el-input v-model="blackList.requestUri" :readonly="!blackList.id ? false : 'readonly'" :placeholder="$t('table.blackList.st')" />
       </el-form-item>
-      <el-form-item label="请求方法" prop="requestMethod">
+      <el-form-item :label="$t('table.blackList.requestMethod')" prop="requestMethod">
         <el-select v-model="blackList.requestMethod" :disabled="!blackList.id ? false : 'disabled'" value="" placeholder="" style="width:100%">
           <el-option
             v-for="item in requestMethods"
@@ -24,33 +24,33 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="规则状态" prop="status">
+      <el-form-item :label="$t('table.blackList.status')" prop="status">
         <el-switch
           v-model="blackList.status"
-          active-text="有效"
-          inactive-text="禁用"
+          :active-text="$t('common.status.valid')"
+          :inactive-text="$t('common.status.invalid')"
           active-value="1"
           inactive-value="0"
         />
       </el-form-item>
-      <el-form-item label="时间限制">
+      <el-form-item :label="$t('table.blackList.timeLimit')">
         <el-switch
           v-model="blackList.timeLimit"
-          active-text="开启"
-          inactive-text="关闭"
+          :active-text="$t('common.open')"
+          :inactive-text="$t('common.close')"
           active-value="1"
           inactive-value="0"
         />
       </el-form-item>
-      <el-form-item v-if="blackList.timeLimit === '1'" label="时间范围" prop="limitTime">
+      <el-form-item v-if="blackList.timeLimit === '1'" :label="$t('table.blackList.timeRange')" prop="limitTime">
         <el-time-picker
           v-model="blackList.limitFrom"
-          placeholder="时间限制起"
+          :placeholder="$t('table.blackList.limitFrom')"
           value-format="HH:mm:ss"
         />
         <el-time-picker
           v-model="blackList.limitTo"
-          placeholder="时间限制止"
+          :placeholder="$t('table.blackList.limitTo')"
           value-format="HH:mm:ss"
         />
       </el-form-item>
@@ -106,7 +106,7 @@ export default {
                 requestMethod: this.blackList.requestMethod
               }).then((r) => {
                 if (r.data && r.data.length) {
-                  callback('已存在相同的规则')
+                  callback(this.$t('tips.sameRule'))
                 } else {
                   callback()
                 }
@@ -155,9 +155,9 @@ export default {
       if (this.screenWidth < 991) {
         return '90%'
       } else if (this.screenWidth < 1400) {
-        return '35%'
+        return '45%'
       } else {
-        return '600px'
+        return '700px'
       }
     },
     setblackList(val) {

@@ -2,18 +2,18 @@
   <div class="app-container">
     <el-alert
       style="margin: -1rem 0 1.2rem 0;padding: 1rem;color: #698474;"
-      title="网关转发请求日志，这些为未被限流或黑名单规则拦截的请求"
+      :title="$t('table.routeLog.tips')"
       type="info"
       :closable="false"
     />
     <div class="filter-container">
-      <el-input v-model="queryParams.ip" placeholder="请求IP" class="filter-item search-item" />
-      <el-input v-model="queryParams.targetServer" placeholder="目标服务" class="filter-item search-item" />
-      <el-input v-model="queryParams.requestMethod" placeholder="请求方法" class="filter-item search-item" />
+      <el-input v-model="queryParams.ip" :placeholder="$t('table.routeLog.ip')" class="filter-item search-item" />
+      <el-input v-model="queryParams.targetServer" :placeholder="$t('table.routeLog.targetServer')" class="filter-item search-item" />
+      <el-input v-model="queryParams.requestMethod" :placeholder="$t('table.routeLog.requestMethod')" class="filter-item search-item" />
       <el-date-picker
         v-model="queryParams.timeRange"
         :range-separator="null"
-        start-placeholder="请求时间"
+        :start-placeholder="$t('table.routeLog.requestTime')"
         value-format="yyyy-MM-dd"
         class="filter-item search-item date-range-item"
         type="daterange"
@@ -45,39 +45,39 @@
       @sort-change="sortChange"
     >
       <el-table-column type="selection" align="center" width="40px" />
-      <el-table-column label="请求IP" prop="ip" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeLog.ip')" prop="ip" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.ip }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求URI" prop="requestUri" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeLog.requestUri')" prop="requestUri" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.requestUri }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="目标URI" prop="targetUri" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeLog.targetUri')" prop="targetUri" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.targetUri }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求方法" prop="requestMethod" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeLog.requestMethod')" prop="requestMethod" :show-overflow-tooltip="true" align="center">
         <template slot-scope="{row}">
           <el-tag :type="row.requestMethod | requestMethodFilter">
             {{ row.requestMethod }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="目标服务" prop="targetServer" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeLog.targetServer')" prop="targetServer" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.targetServer }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求时间" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
+      <el-table-column :label="$t('table.routeLog.requestTime')" prop="createTime" :show-overflow-tooltip="true" align="center" sortable="custom">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="请求地址" prop="location" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.routeLog.location')" prop="location" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.location }}</span>
         </template>

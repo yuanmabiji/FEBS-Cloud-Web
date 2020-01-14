@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="notify">网关管理模块操作需要认证，<el-link id="route-login" type="primary" @click="dialogFormVisible = true">点击认证</el-link></span>
+    <span class="notify">{{ $t('table.routeLogin.needLogin') }} <el-link id="route-login" type="primary" @click="dialogFormVisible = true">{{ $t('table.routeLogin.toLogin') }}</el-link></span>
     <el-dialog
       :width="width"
       title=""
@@ -11,7 +11,7 @@
     >
       <el-form ref="form" :model="auth" :rules="rules">
         <el-form-item id="title">
-          <i class="el-icon-lock" /> <span>FEBS 网关管理认证</span>
+          <i class="el-icon-lock" /> <span>{{ $t('table.routeLogin.title') }}</span>
         </el-form-item>
         <el-form-item prop="username">
           <el-input
@@ -43,7 +43,7 @@
         <el-button type="warning" plain @click="reset">
           {{ $t('common.cancel') }}
         </el-button>
-        <el-button type="primary" plain @click="login">认证</el-button>
+        <el-button type="primary" plain @click="login">{{ $t('table.routeLogin.login') }}</el-button>
       </div>
     </el-dialog>
   </div>
