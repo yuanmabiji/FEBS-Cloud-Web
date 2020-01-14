@@ -65,7 +65,7 @@
           <span>{{ scope.row.limitTo ? scope.row.limitTo : $t('table.blackList.allTheTime') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('table.blackList.ip')" prop="location" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.blackList.location')" prop="location" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.location }}</span>
         </template>
