@@ -182,6 +182,7 @@ export default {
     routeLogin: {
       needLogin: '网关管理模块操作需要认证，',
       toLogin: '点击认证',
+      tips: '该模块功能需要预先开启网关增强，开启方法请参考文档：',
       title: 'FEBS 网关管理认证',
       login: '认证'
     },

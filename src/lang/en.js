@@ -182,6 +182,7 @@ export default {
     routeLogin: {
       needLogin: 'The operation of the gateway management module requires authentication, ',
       toLogin: ' Click to login',
+      tips: 'The function of this module needs to be enhanced in advance. For the method of opening, please refer to the document: ',
       title: 'FEBS Gateway Certification',
       login: 'Login'
     },
