@@ -341,15 +341,53 @@ export default {
           series: [
             {
               name: this.$t('common.you'),
-              type: 'bar',
-              barWidth: '25%',
+              smooth: true,
+              type: 'line',
               color: 'rgb(0, 227, 150)',
+              areaStyle: {
+                color: {
+                  type: 'linear',
+                  x: 0,
+                  y: 0,
+                  x2: 0,
+                  y2: 1,
+                  colorStops: [{
+                    offset: 0,
+                    color: 'rgba(0, 227, 150, 0.8)'
+                  },
+                  {
+                    offset: 1,
+                    color: '#fff'
+                  }
+                  ],
+                  globalCoord: false
+                }
+              },
               data: tenUserVisitCount
             },
             {
               name: this.$t('common.total'),
-              type: 'bar',
-              barWidth: '25%',
+              smooth: true,
+              type: 'line',
+              areaStyle: {
+                color: {
+                  type: 'linear',
+                  x: 0,
+                  y: 0,
+                  x2: 0,
+                  y2: 1,
+                  colorStops: [{
+                    offset: 0,
+                    color: 'rgba(0, 143, 251, 0.8)'
+                  },
+                  {
+                    offset: 1,
+                    color: '#fff'
+                  }
+                  ],
+                  globalCoord: false
+                }
+              },
               color: 'rgb(0, 143, 251)',
               data: tenVisitCount
             }
@@ -419,7 +457,7 @@ export default {
           width: 50%;
           border-top: 1px solid #f1f1f1;
           border-bottom: 1px solid #f1f1f1;
-          padding: .6rem;
+          padding: .7rem;
           .project-avatar-wrapper {
             display:inline-block;
             float:left;
@@ -448,8 +486,8 @@ export default {
           color:rgba(0, 0, 0, 0.45);
           p {
             margin: 5px 0 0 0;
-            font-size: .7rem;
-            line-height: 1.3rem;
+            font-size: .85rem;
+            line-height: 1.4rem;
             white-space:normal;
           }
         }

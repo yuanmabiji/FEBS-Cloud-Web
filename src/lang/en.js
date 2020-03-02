@@ -252,7 +252,8 @@ export default {
     getCodeImageFailed: 'Failed to get image verification code',
     tooManyRequest: 'Getting the authentication code is too frequent. Please try again later',
     clientOriginSecret: 'The original password of the client is: ',
-    sameRule: 'The same rule already exists'
+    sameRule: 'The same rule already exists',
+    createTips: 'Please fill in the relevant information in the form'
   },
   rules: {
     require: 'Can\'t be empty',

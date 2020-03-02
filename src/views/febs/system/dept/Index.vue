@@ -134,6 +134,10 @@ export default {
     },
     add() {
       this.resetForm()
+      this.$message({
+        message: this.$t('tips.createTips'),
+        type: 'info'
+      })
     },
     deleteDept() {
       const checked = this.$refs.deptTree.getCheckedKeys()

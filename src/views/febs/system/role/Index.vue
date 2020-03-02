@@ -252,6 +252,10 @@ export default {
     },
     add() {
       this.resetForm()
+      this.$message({
+        message: this.$t('tips.createTips'),
+        type: 'info'
+      })
     },
     sortChange(val) {
       this.sort.field = val.prop

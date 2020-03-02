@@ -144,7 +144,7 @@
       </el-dropdown>
     </el-form>
     <span class="login-footer">
-      © 2019 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS
+      © 2020 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS
     </span>
   </div>
 </template>

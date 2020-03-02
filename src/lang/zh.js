@@ -252,7 +252,8 @@ export default {
     getCodeImageFailed: '获取图形验证码失败',
     tooManyRequest: '获取验证码过于频繁，请稍后再试',
     clientOriginSecret: '该客户端原始密码为：',
-    sameRule: '已存在相同的规则'
+    sameRule: '已存在相同的规则',
+    createTips: '请在表单中填写相关信息'
   },
   rules: {
     require: '不能为空',

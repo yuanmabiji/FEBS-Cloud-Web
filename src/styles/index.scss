@@ -47,7 +47,7 @@ html {
 }
 
 .no-padding {
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
 .padding-content {
@@ -232,6 +232,8 @@ aside {
   margin-right: 10px;
 }
 .el-submenu__title {
+  font-weight: 400;
+  font-size: 14px;
   i {
     color: rgba(255, 255, 255, 0.7);
     margin-right: 10px !important;
@@ -253,8 +255,22 @@ aside {
 .el-button {
   padding: 10px 20px;
 }
-.el-table th {
-  padding: 9px 0;
+.el-table {
+  th {
+    padding: 7px 0;
+  }
+}
+.el-table--group, .el-table--border {
+  border: none;
+}
+.el-table th.is-leaf, .el-table td {
+  border-top: 1px solid #dfe6ec;
+}
+.el-table th.is-leaf, .el-table td {
+  border-bottom: none;
+}
+.el-table th.is-leaf:first-child, .el-table td:first-child {
+  border-left: 1px solid #dfe6ec;
 }
 .el-input-number {
   line-height: 36px;

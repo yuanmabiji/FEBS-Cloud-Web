@@ -170,7 +170,7 @@ export default {
         position: relative;
         .user-name {
           vertical-align: top;
-          font-size: 1rem;
+          font-size: .9rem;
           margin-left: 5px;
           margin-top: -4px;
           display: inline-block;

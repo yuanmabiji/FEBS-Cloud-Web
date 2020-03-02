@@ -26,8 +26,8 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
-  background: #f8f8f8;
-  font-size: .9rem;
+  background: #f3f5f8;
+  font-size: .88rem;
 }
 
 .fixed-header+.app-main {
