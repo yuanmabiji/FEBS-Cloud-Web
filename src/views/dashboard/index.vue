@@ -343,32 +343,7 @@ export default {
               name: this.$t('common.you'),
               smooth: true,
               type: 'line',
-              color: 'rgb(0, 227, 150)',
-              areaStyle: {
-                color: {
-                  type: 'linear',
-                  x: 0,
-                  y: 0,
-                  x2: 0,
-                  y2: 1,
-                  colorStops: [{
-                    offset: 0,
-                    color: 'rgba(0, 227, 150, 0.8)'
-                  },
-                  {
-                    offset: 1,
-                    color: '#fff'
-                  }
-                  ],
-                  globalCoord: false
-                }
-              },
-              data: tenUserVisitCount
-            },
-            {
-              name: this.$t('common.total'),
-              smooth: true,
-              type: 'line',
+              color: 'rgb(0, 143, 251)',
               areaStyle: {
                 color: {
                   type: 'linear',
@@ -388,7 +363,32 @@ export default {
                   globalCoord: false
                 }
               },
-              color: 'rgb(0, 143, 251)',
+              data: tenUserVisitCount
+            },
+            {
+              name: this.$t('common.total'),
+              smooth: true,
+              type: 'line',
+              color: 'rgba(82, 222, 151, 1)',
+              areaStyle: {
+                color: {
+                  type: 'linear',
+                  x: 0,
+                  y: 0,
+                  x2: 0,
+                  y2: 1,
+                  colorStops: [{
+                    offset: 0,
+                    color: 'rgba(82, 222, 151, 0.8)'
+                  },
+                  {
+                    offset: 1,
+                    color: '#fff'
+                  }
+                  ],
+                  globalCoord: false
+                }
+              },
               data: tenVisitCount
             }
           ]
