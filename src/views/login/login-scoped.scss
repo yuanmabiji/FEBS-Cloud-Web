@@ -3,7 +3,7 @@ $dark_gray:#aaa;
 $light_gray:#eee;
 
 .login-container {
-  background: url(../../assets/background2.jpg) 50% no-repeat;
+  background: url(../../assets/background2.png) 50% no-repeat;
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -30,7 +30,7 @@ $light_gray:#eee;
   .login-form {
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 75%;
     margin: -180px 0 0 -160px;
     width: 320px;
     height: 380px;
@@ -72,9 +72,10 @@ $light_gray:#eee;
     width: 100%;
     text-align: center;
     color: white;
-    font-size: .85rem;
+    font-size: .9rem;
     line-height: 1rem;
     height: 1rem;
+    font-weight: 600;
   }
   .tips {
     font-size: 14px;

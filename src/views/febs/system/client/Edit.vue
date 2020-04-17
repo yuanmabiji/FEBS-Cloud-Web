@@ -8,16 +8,16 @@
     :visible.sync="isVisible"
   >
     <el-form ref="form" :model="client" :rules="rules" label-position="right" label-width="165px">
-      <el-form-item label="clientId" prop="clientId">
+      <el-form-item :label="$t('table.client.clientId')" prop="clientId">
         <el-input v-model="client.clientId" :readonly="type === 'add' ? false : 'readonly'" />
       </el-form-item>
-      <el-form-item label="clientSecret" prop="clientSecret">
+      <el-form-item :label="$t('table.client.clientSecret')" prop="clientSecret">
         <el-input v-model="client.clientSecret" :readonly="type === 'add' ? false : 'readonly'" />
       </el-form-item>
-      <el-form-item label="scope" prop="scope">
+      <el-form-item :label="$t('table.client.scope')" prop="scope">
         <el-input v-model="client.scope" />
       </el-form-item>
-      <el-form-item label="authorizedGrantTypes" prop="authorizedGrantTypes">
+      <el-form-item :label="$t('table.client.authorizedGrantTypes')" prop="authorizedGrantTypes">
         <el-select v-model="client.authorizedGrantTypes" multiple value="" placeholder="" style="width:100%">
           <el-option
             v-for="item in grantTypes"
@@ -27,16 +27,16 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="webServerRedirectUri" prop="webServerRedirectUri">
+      <el-form-item :label="$t('table.client.webServerRedirectUri')" prop="webServerRedirectUri">
         <el-input v-model="client.webServerRedirectUri" />
       </el-form-item>
-      <el-form-item label="accessTokenValidity" prop="accessTokenValidity">
+      <el-form-item :label="$t('table.client.accessTokenValidity')" prop="accessTokenValidity">
         <el-input v-model="client.accessTokenValidity" />
       </el-form-item>
-      <el-form-item label="refreshTokenValidity" prop="refreshTokenValidity">
+      <el-form-item :label="$t('table.client.refreshTokenValidity')" prop="refreshTokenValidity">
         <el-input v-model="client.refreshTokenValidity" />
       </el-form-item>
-      <el-form-item label="autoapprove" prop="autoapprove">
+      <el-form-item :label="$t('table.client.autoapprove')" prop="autoapprove">
         <el-select v-model="client.autoapprove" placeholder="" value="" style="width:100%">
           <el-option label="true" value="1" />
           <el-option label="false" value="0" />

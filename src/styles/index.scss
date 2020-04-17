@@ -252,6 +252,9 @@ aside {
   height: 38px;
   line-height: 38px;
 }
+.el-menu-item.is-active {
+  background-color: #1f2328 !important;
+}
 .el-button {
   padding: 10px 20px;
 }
@@ -260,10 +263,17 @@ aside {
     padding: 7px 0;
   }
 }
+.el-table thead {
+  color: #606266;
+}
 .el-table--group, .el-table--border {
   border: none;
 }
 .el-table th.is-leaf, .el-table td {
+  border-top: 1px solid #dfe6ec;
+}
+.el-table__empty-block {
+  border-left: 1px solid #dfe6ec;
   border-top: 1px solid #dfe6ec;
 }
 .el-table th.is-leaf, .el-table td {

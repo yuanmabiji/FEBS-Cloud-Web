@@ -2,6 +2,14 @@
   <div class="app-container">
     <div class="filter-container">
       <el-input v-model="queryParams.tableName" :placeholder="$t('table.gen.generate.tableName')" class="filter-item search-item" />
+      <el-select v-model="queryParams.datasource" :placeholder="$t('table.gen.generate.datasource')" class="filter-item search-item" @change="search">
+        <el-option
+          v-for="item in datasourcesName"
+          :key="item"
+          :label="item"
+          :value="item"
+        />
+      </el-select>
       <el-button class="filter-item" type="primary" plain @click="search">
         {{ $t('table.search') }}
       </el-button>
@@ -71,11 +79,13 @@ export default {
       pagination: {
         size: 10,
         num: 1
-      }
+      },
+      datasourcesName: []
     }
   },
   mounted() {
     this.fetch()
+    this.getDatasources()
   },
   methods: {
     search() {
@@ -83,9 +93,15 @@ export default {
         ...this.queryParams
       })
     },
+    getDatasources() {
+      this.$get('generator/datasources').then((r) => {
+        this.datasourcesName = r.data.data
+      })
+    },
     gen(row) {
-      this.$download('system/generator', {
+      this.$download('generator', {
         name: row.name,
+        datasource: this.queryParams.datasource,
         remark: row.remark
       }, `${row.name}_code.zip`)
     },
@@ -97,7 +113,7 @@ export default {
       this.loading = true
       params.pageSize = this.pagination.size
       params.pageNum = this.pagination.num
-      this.$get('system/generator/tables', { ...params }).then((r) => {
+      this.$get('generator/tables', { ...params }).then((r) => {
         const data = r.data.data
         this.total = data.total
         this.list = data.rows

@@ -193,7 +193,6 @@ export default {
     submitForm() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          console.log(this.rateLimitRule)
           this.buttonLoading = true
           if (!this.rateLimitRule.id) {
             // create

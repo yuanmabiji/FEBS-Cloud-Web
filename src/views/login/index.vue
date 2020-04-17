@@ -11,6 +11,7 @@
       <div class="desc">6. {{ $t('common.desc.f') }}</div>
       <div class="desc">7. {{ $t('common.desc.g') }}</div>
       <div class="desc">8. {{ $t('common.desc.h') }}</div>
+      <div class="desc">9. {{ $t('common.desc.i') }}</div>
     </div>
     <el-form ref="loginForm" :model="loginForm" :rules="rules" class="login-form" autocomplete="off" label-position="left">
       <div class="title-container">
@@ -176,8 +177,8 @@ export default {
         { img: 'microsoft.png', name: 'microsoft', radius: false }
       ],
       loginForm: {
-        username: '',
-        password: '',
+        username: 'scott',
+        password: '1234qwer',
         bindUsername: '',
         bindPassword: '',
         signUsername: '',

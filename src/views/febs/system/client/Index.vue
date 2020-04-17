@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="queryParams.clientId" placeholder="clientId" class="filter-item search-item" />
+      <el-input v-model="queryParams.clientId" :placeholder="$t('table.client.clientId')" class="filter-item search-item" />
       <el-button class="filter-item" type="primary" plain @click="search">
         {{ $t('table.search') }}
       </el-button>
@@ -30,42 +30,42 @@
       @selection-change="onSelectChange"
     >
       <el-table-column type="selection" align="center" width="40px" />
-      <el-table-column label="clientId" prop="clientId" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.client.clientId')" prop="clientId" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.clientId }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="clientSecret" prop="clientSecret" :show-overflow-tooltip="true" align="center" min-width="100px">
+      <el-table-column :label="$t('table.client.clientSecret')" prop="clientSecret" :show-overflow-tooltip="true" align="center" min-width="100px">
         <template>
           <span>******</span>
         </template>
       </el-table-column>
-      <el-table-column label="scope" prop="scope" :show-overflow-tooltip="true" align="center">
+      <el-table-column :label="$t('table.client.scope')" prop="scope" :show-overflow-tooltip="true" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.scope }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="authorizedGrantTypes" prop="authorizedGrantTypes" :show-overflow-tooltip="true" align="center" min-width="170px">
+      <el-table-column :label="$t('table.client.authorizedGrantTypes')" prop="authorizedGrantTypes" :show-overflow-tooltip="true" align="center" min-width="170px">
         <template slot-scope="scope">
           <span>{{ scope.row.authorizedGrantTypes }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="accessTokenValidity" prop="accessTokenValidity" :show-overflow-tooltip="true" align="center" min-width="160px">
+      <el-table-column :label="$t('table.client.accessTokenValidity')" prop="accessTokenValidity" :show-overflow-tooltip="true" align="center" min-width="160px">
         <template slot-scope="scope">
           <span>{{ scope.row.accessTokenValidity }} s</span>
         </template>
       </el-table-column>
-      <el-table-column label="refreshTokenValidity" prop="refreshTokenValidity" :show-overflow-tooltip="true" align="center" min-width="160px">
+      <el-table-column :label="$t('table.client.refreshTokenValidity')" prop="refreshTokenValidity" :show-overflow-tooltip="true" align="center" min-width="160px">
         <template slot-scope="scope">
           <span>{{ (scope.row.refreshTokenValidity) ? (scope.row.refreshTokenValidity + 's') : '' }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="webServerRedirectUri" prop="webServerRedirectUri" :show-overflow-tooltip="true" align="center" min-width="180px">
+      <el-table-column :label="$t('table.client.webServerRedirectUri')" prop="webServerRedirectUri" :show-overflow-tooltip="true" align="center" min-width="180px">
         <template slot-scope="scope">
           <span>{{ scope.row.webServerRedirectUri }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="autoapprove" prop="autoapprove" :show-overflow-tooltip="true" align="center" min-width="140px">
+      <el-table-column :label="$t('table.client.autoapprove')" prop="autoapprove" :show-overflow-tooltip="true" align="center" min-width="140px">
         <template slot-scope="{row}">
           <el-tag v-if="row.autoapprove !== null" :type="row.autoapprove | approveFilter">
             {{ transApprove(row.autoapprove) }}

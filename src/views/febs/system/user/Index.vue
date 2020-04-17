@@ -311,9 +311,12 @@ export default {
         roleId = row.roleId.split(',')
         row.roleId = roleId
       }
-      this.$refs.edit.setUser(row)
-      this.dialog.title = this.$t('common.edit')
-      this.dialog.isVisible = true
+      this.$get(`system/user/${row.userId}`).then((r) => {
+        row.deptIds = r.data.data
+        this.$refs.edit.setUser(row)
+        this.dialog.title = this.$t('common.edit')
+        this.dialog.isVisible = true
+      })
     },
     fetch(params = {}) {
       params.pageSize = this.pagination.size

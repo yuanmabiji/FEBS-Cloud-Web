@@ -47,7 +47,8 @@ export default {
       oldPassword: 'Old Password',
       newPassword: 'New Password',
       confirmPassword: 'Confirm Again',
-      social: 'Third Party Account'
+      social: 'Third Party Account',
+      dataPermission: 'Data Permission'
     },
     role: {
       roleName: 'RoleName',
@@ -69,6 +70,16 @@ export default {
       deptName: 'DeptName',
       parentId: 'Parent',
       orderNum: 'Order'
+    },
+    client: {
+      clientId: 'clientId',
+      clientSecret: 'clientSecret',
+      scope: 'scope',
+      authorizedGrantTypes: 'authorizedGrantTypes',
+      accessTokenValidity: 'accessTokenValidity',
+      refreshTokenValidity: 'refreshTokenValidity',
+      webServerRedirectUri: 'webServerRedirectUri',
+      autoapprove: 'autoapprove'
     },
     systemLog: {
       username: 'UserName',
@@ -106,14 +117,43 @@ export default {
         remark: 'Remark',
         dataRows: 'DataRows',
         createTime: 'CreateTime',
-        updateTime: 'UpdateTime'
+        updateTime: 'UpdateTime',
+        datasource: 'DataSource'
       }
+    },
+    job: {
+      beanName: 'BeanName',
+      methodName: 'MethodName',
+      params: 'Params',
+      cronExpression: 'CronExpression',
+      status: 'Status',
+      createTime: 'CreateTime',
+      executeTime: 'ExecuteTime',
+      error: 'Error',
+      time: 'Duration',
+      remark: 'Remark',
+      add: 'Create',
+      delete: 'Delete',
+      resume: 'Resume',
+      pause: 'Pause',
+      run: 'Run once',
+      fail: 'Fail',
+      success: 'Success',
+      normal: 'Normal'
     },
     eximport: {
       field1: 'Field 1',
       field2: 'Field 2',
       field3: 'Field 3',
       createTime: 'Import Time'
+    },
+    datapermissionTest: {
+      field1: 'Field 1',
+      field2: 'Field 2',
+      field3: 'Field 3',
+      field4: 'Field 4',
+      createTime: 'CreateTime',
+      tips: 'Data permission test, different users see different data'
     },
     routeUser: {
       tips: 'Gateway management user account list, permissions are divided into ordinary users (user) and administrative users (admin)',
@@ -253,7 +293,10 @@ export default {
     tooManyRequest: 'Getting the authentication code is too frequent. Please try again later',
     clientOriginSecret: 'The original password of the client is: ',
     sameRule: 'The same rule already exists',
-    createTips: 'Please fill in the relevant information in the form'
+    createTips: 'Please fill in the relevant information in the form',
+    cronInvalid: 'Cron expression is invalid',
+    executeSuccess: 'Success',
+    executeFail: 'Fail'
   },
   rules: {
     require: 'Can\'t be empty',
@@ -285,7 +328,8 @@ export default {
       e: 'Integrate multiple monitoring to escort microservices',
       f: 'Provide detailed documentation and teach you how to build it',
       g: 'Build a highly available microservices cluster by K8S',
-      h: 'Integrated RocketMQ, TX-LCN, Seata distributed transaction control'
+      h: 'Integrated RocketMQ, TX-LCN, Seata distributed transaction control',
+      i: 'Data permissions, social login...'
     },
     view: 'Detail',
     tips: 'Tips',

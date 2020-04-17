@@ -113,7 +113,7 @@ export default {
       }
     },
     getConfig() {
-      this.$get('system/generatorConfig').then((r) => {
+      this.$get('generator/config').then((r) => {
         const data = r.data.data
         this.config = { ...data }
       })
@@ -122,7 +122,7 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.buttonLoading = true
-          this.$post('system/generatorConfig', { ...this.config }).then(() => {
+          this.$post('generator/config', { ...this.config }).then(() => {
             this.buttonLoading = false
             this.$message({
               message: this.$t('tips.updateSuccess'),

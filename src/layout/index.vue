@@ -8,6 +8,7 @@
         <tags-view v-if="needTagsView" />
       </div>
       <app-main />
+      <div class="footer">© 2020 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS</div>
       <right-panel v-if="showSettings">
         <settings />
       </right-panel>
@@ -104,6 +105,28 @@ export default {
   }
 
   .mobile .fixed-header {
+    width: 100%;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    height: 2.4rem;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    background: #fff;
+    width: calc(100% - #{$sideBarWidth});
+    display: block;
+    z-index: 999;
+    color: #606266;
+    line-height: 2.4rem;
+  }
+  .hideSidebar .footer  {
+    width: calc(100% - 54px)
+  }
+
+  .mobile .footer  {
     width: 100%;
   }
 </style>

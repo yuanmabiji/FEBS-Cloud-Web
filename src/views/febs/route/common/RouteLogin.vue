@@ -63,8 +63,8 @@ export default {
       dialogFormVisible: false,
       width: this.initWidth(),
       auth: {
-        username: '',
-        password: ''
+        username: 'Jack',
+        password: '123456'
       },
       rules: {
         username: { required: true, message: this.$t('rules.require'), trigger: 'blur' },
