@@ -62,10 +62,17 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.buttonLoading = false
-          this.$message({
-            message: '演示环境不允许修改密码！',
-            type: 'error'
+          this.buttonLoading = true
+          this.$put('system/user/password', {
+            password: this.p.newPassword
+          }).then(() => {
+            this.buttonLoading = false
+            this.$message({
+              message: this.$t('tips.updateSuccess'),
+              type: 'success'
+            })
+            this.$refs.form.clearValidate()
+            this.$refs.form.resetFields()
           })
         } else {
           return false
