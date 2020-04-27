@@ -86,6 +86,13 @@ export default {
       }
     }
   },
+  mounted() {
+    window.onresize = () => {
+      return (() => {
+        this.width = this.initWidth()
+      })()
+    }
+  },
   methods: {
     initJob() {
       return {
