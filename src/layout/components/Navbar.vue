@@ -1,6 +1,11 @@
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <hamburger
+      id="hamburger-container"
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
 
     <!--    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />-->
 
@@ -83,11 +88,15 @@ export default {
       this.$store.commit('setting/openSettingBar', true)
     },
     logout() {
-      this.clean()
+      this.$delete('auth/signout').then(() => {
+        this.clean()
+      }).catch(() => {
+        this.clean()
+      })
     },
     clean() {
       db.clear()
-      location.reload()
+      this.$router.push('login')
     },
     deleteCache() {
       this.$confirm(this.$t('tips.confirmDeleteCache'), this.$t('common.tips'), {
@@ -113,13 +122,14 @@ export default {
   position: relative;
   background: #fff;
   border-bottom: 1px solid #f1f1f1;
+
   .hamburger-container {
     line-height: 46px;
     height: 100%;
     float: left;
     cursor: pointer;
     transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       background: rgba(0, 0, 0, .025)
@@ -168,6 +178,7 @@ export default {
       .avatar-wrapper {
         margin-top: 5px;
         position: relative;
+
         .user-name {
           vertical-align: top;
           font-size: .9rem;
@@ -175,6 +186,7 @@ export default {
           margin-top: -4px;
           display: inline-block;
         }
+
         .user-avatar {
           cursor: pointer;
           width: 2rem;
