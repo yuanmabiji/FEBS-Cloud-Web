@@ -119,12 +119,16 @@ router.beforeEach((to, from, next) => {
         next()
       } else {
         next('/login')
+        NProgress.done()
       }
     }
   }
 })
 
-router.afterEach(() => {
+router.afterEach((to, from) => {
+  if (to.path === '/login') {
+    asyncRouter = null
+  }
   NProgress.done()
 })
 
