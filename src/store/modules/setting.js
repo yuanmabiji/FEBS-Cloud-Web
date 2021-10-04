@@ -28,7 +28,8 @@ export default {
       'rgb(114, 46, 209)'
     ],
     color: db.get('COLOR', 'rgb(24, 144, 255)'),
-    theme: '#1890FF'
+    theme: '#1890FF',
+    sideBarTheme: db.get('SIDEBAR_THEME', true)
   },
   mutations: {
     toggleSidebar: state => {
@@ -80,6 +81,10 @@ export default {
     },
     setTheme(state, val) {
       state.theme = val
+    },
+    setSideBarTheme(state, val) {
+      db.save('SIDEBAR_THEME', val)
+      state.sideBarTheme = val
     }
   }
 }

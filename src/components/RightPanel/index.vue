@@ -1,11 +1,6 @@
 <template>
   <div ref="rightPanel" :class="{show:showSettingBar}" class="rightPanel-container">
-    <div class="rightPanel-background" />
-    <div class="rightPanel">
-      <div class="rightPanel-items">
-        <slot />
-      </div>
-    </div>
+    <slot />
   </div>
 </template>
 
@@ -38,21 +33,16 @@ export default {
   },
   mounted() {
     this.insertToBody()
-    this.addEventClick()
   },
   beforeDestroy() {
     const elx = this.$refs.rightPanel
     elx.remove()
   },
   methods: {
-    addEventClick() {
-      window.addEventListener('click', this.closeSidebar)
-    },
     closeSidebar(evt) {
       const parent = evt.target.closest('.rightPanel')
       if (!parent) {
         this.$store.commit('setting/openSettingBar', false)
-        window.removeEventListener('click', this.closeSidebar)
       }
     },
     insertToBody() {
@@ -91,7 +81,7 @@ export default {
   top: 0;
   right: 0;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .05);
-  transition: all .25s cubic-bezier(.7, .3, .1, 1);
+  transition: width .5s cubic-bezier(.7, .3, .1, 1);
   transform: translate(100%);
   background: #fff;
   z-index: 40000;
