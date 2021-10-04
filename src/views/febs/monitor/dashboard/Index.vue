@@ -51,7 +51,7 @@ export default {
           icon: 'grafana.svg',
           name: 'Grafana面板',
           url: pages.grafanaUrl,
-          description: 'Grafana，监控Redis,Docker,MySQL等',
+          description: 'Grafana，监控Redis、Docker等',
           c: '#1890ff',
           bgc: 'rgba(236,251,252,0.3)'
         },
