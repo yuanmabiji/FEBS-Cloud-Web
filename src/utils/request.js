@@ -1,14 +1,16 @@
 import axios from 'axios'
-import { Message, MessageBox } from 'element-ui'
 import { authorizationValue } from '@/settings'
 import store from '@/store/index'
 import router from '@/router'
 import { getToken, getRefreshToken, getExpireTime } from '@/utils/auth'
 import NProgress from 'nprogress'
+import MessageOnce from './messageOnce'
+
+const messageOnce = new MessageOnce()
 import 'nprogress/nprogress.css'
 
-// 请求超时时间，10s
-const requestTimeOut = 10 * 1000
+// 请求超时时间，30s
+const requestTimeOut = 30 * 1000
 const success = 200
 // 更换令牌的时间区间
 const checkRegion = 5 * 60 * 1000
@@ -70,37 +72,37 @@ service.interceptors.response.use((config) => {
     const errorMessage = error.response.data === null ? '系统内部异常，请联系网站管理员' : error.response.data.message
     switch (error.response.status) {
       case 404:
-        Message({
+        messageOnce.error({
           message: '很抱歉，资源未找到',
           type: 'error',
           duration: messageDuration
         })
         break
       case 403:
-        Message({
+        messageOnce.error({
           message: '很抱歉，您暂无该操作权限',
           type: 'error',
           duration: messageDuration
         })
         break
       case 401:
-        Message({
-          message: '很抱歉，认证已失效，请重新登录',
-          type: 'error',
+        router.push('/login')
+        messageOnce.error({
+          message: '登录已过期，请重新登录',
+          type: 'info',
           duration: messageDuration
         })
         break
       default:
         if (errorMessage === 'refresh token无效') {
-          MessageBox.alert('登录已过期，请重新登录', '温馨提示', {
-            confirmButtonText: '确定',
-            showClose: false,
-            callback: action => {
-              router.push('/login')
-            }
+          router.push('/login')
+          messageOnce.error({
+            message: '登录已过期，请重新登录',
+            type: 'info',
+            duration: messageDuration
           })
         } else {
-          Message({
+          messageOnce.error({
             message: errorMessage,
             type: 'error',
             duration: messageDuration
@@ -108,6 +110,13 @@ service.interceptors.response.use((config) => {
         }
         break
     }
+  }
+  if (error.message.includes('timeout')) {
+    messageOnce.error({
+      message: '请求服务器超时',
+      type: 'error',
+      duration: messageDuration
+    })
   }
   return Promise.reject(error)
 })
@@ -211,7 +220,7 @@ const request = {
     }).catch((r) => {
       console.error(r)
       NProgress.done()
-      Message({
+      messageOnce.error({
         message: '下载失败',
         type: 'error',
         duration: messageDuration
