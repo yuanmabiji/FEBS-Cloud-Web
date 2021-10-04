@@ -6,14 +6,13 @@
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
-
-    <!--    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />-->
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
-        <lang-select class="right-menu-item hover-effect" />
+        <lang-select class="right-menu-item hover-effect" style="display: none" />
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
@@ -30,14 +29,6 @@
           <el-dropdown-item>
             <span style="display:block;" @click="setting">{{ $t('navbar.setting') }}</span>
           </el-dropdown-item>
-          <a target="_blank" href="https://github.com/wuyouzhuguli/FEBS-Cloud">
-            <el-dropdown-item>
-              {{ $t('navbar.github') }}
-            </el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://www.kancloud.cn/mrbird/spring-cloud/1263679">
-            <el-dropdown-item>{{ $t('navbar.docs') }}</el-dropdown-item>
-          </a>
           <el-dropdown-item divided>
             <span style="display:block;" @click="deleteCache">{{ $t('navbar.deleteCache') }}</span>
           </el-dropdown-item>
@@ -51,7 +42,7 @@
 </template>
 
 <script>
-// import Breadcrumb from '@/components/Breadcrumb'
+import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import LangSelect from '@/components/LangSelect'
 import db from '@/utils/localstorage'
@@ -60,7 +51,7 @@ import Search from '@/components/HeaderSearch'
 
 export default {
   components: {
-    // Breadcrumb,
+    Breadcrumb,
     Hamburger,
     LangSelect,
     Screenfull,
@@ -88,7 +79,7 @@ export default {
       this.$store.commit('setting/openSettingBar', true)
     },
     logout() {
-      this.$delete('auth/signout').then(() => {
+      this.$delete('signOut').then(() => {
         this.clean()
       }).catch(() => {
         this.clean()
@@ -96,7 +87,13 @@ export default {
     },
     clean() {
       db.clear()
+      this.$store.dispatch('tagsView/delAllVisitedViews')
+      this.$store.dispatch('tagsView/delAllCachedViews')
       this.$router.push('login')
+      this.$message({
+        message: '安全退出',
+        type: 'success'
+      })
     },
     deleteCache() {
       this.$confirm(this.$t('tips.confirmDeleteCache'), this.$t('common.tips'), {
@@ -189,8 +186,8 @@ export default {
 
         .user-avatar {
           cursor: pointer;
-          width: 30px;
-          height: 30px;
+          width: 2rem;
+          height: 2rem;
           border-radius: 50%;
           vertical-align: text-bottom;
         }
