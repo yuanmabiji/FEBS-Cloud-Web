@@ -5,7 +5,7 @@
         <div class="app-container">
           <div class="filter-container">
             <el-input v-model="menuName" :placeholder="$t('table.menu.menuName')" class="filter-item search-item" />
-            <el-button class="filter-item" type="primary" @click="search">
+            <el-button class="filter-item" type="primary" plain @click="search">
               {{ $t('table.search') }}
             </el-button>
             <el-button class="filter-item" type="success" ain @click="reset">
