@@ -8,7 +8,7 @@
         <tags-view v-if="needTagsView" />
       </div>
       <app-main />
-      <div class="footer">© 2020 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS</div>
+      <div class="footer">© {{ curYear }} <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS</div>
       <right-panel v-if="showSettings">
         <settings />
       </right-panel>
@@ -32,6 +32,11 @@ export default {
     TagsView
   },
   mixins: [ResizeMixin],
+  data() {
+    return {
+      curYear: 0
+    }
+  },
   computed: {
     sideBarTheme() {
       return this.$store.state.setting.sideBarTheme
@@ -59,6 +64,9 @@ export default {
         mobile: this.device === 'mobile'
       }
     }
+  },
+  created() {
+    this.curYear = new Date().getFullYear()
   },
   methods: {
     handleClickOutside() {
