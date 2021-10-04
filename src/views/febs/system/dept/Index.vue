@@ -22,17 +22,22 @@
               </el-dropdown-menu>
             </el-dropdown>
           </div>
-          <el-tree
-            ref="deptTree"
-            :data="deptTree"
-            :check-strictly="true"
-            show-checkbox
-            accordion
-            node-key="id"
-            highlight-current
-            :filter-node-method="filterNode"
-            @node-click="nodeClick"
-          />
+          <template v-if="finished">
+            <el-tree
+              ref="deptTree"
+              :data="deptTree"
+              :check-strictly="true"
+              show-checkbox
+              accordion
+              node-key="id"
+              highlight-current
+              :filter-node-method="filterNode"
+              @node-click="nodeClick"
+            />
+          </template>
+          <template v-else>
+            <el-skeleton :rows="5" animated />
+          </template>
         </div>
       </el-col>
       <el-col :xs="24" :sm="12">
@@ -82,6 +87,7 @@ export default {
   data() {
     return {
       deptName: '',
+      finished: false,
       buttonLoading: false,
       deptTree: [],
       dept: this.initDept(),
@@ -106,8 +112,10 @@ export default {
       }
     },
     initDeptTree() {
+      this.finished = false
       this.$get('system/dept').then((r) => {
         this.deptTree = r.data.data.rows
+        this.finished = true
       })
     },
     exportExcel() {

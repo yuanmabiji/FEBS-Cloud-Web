@@ -22,17 +22,22 @@
               </el-dropdown-menu>
             </el-dropdown>
           </div>
-          <el-tree
-            ref="menuTree"
-            :data="menuTree"
-            :check-strictly="true"
-            show-checkbox
-            accordion
-            node-key="id"
-            highlight-current
-            :filter-node-method="filterNode"
-            @node-click="nodeClick"
-          />
+          <template v-if="finished">
+            <el-tree
+              ref="menuTree"
+              :data="menuTree"
+              :check-strictly="true"
+              show-checkbox
+              accordion
+              node-key="id"
+              highlight-current
+              :filter-node-method="filterNode"
+              @node-click="nodeClick"
+            />
+          </template>
+          <template v-else>
+            <el-skeleton :rows="6" animated />
+          </template>
         </div>
       </el-col>
       <el-col :xs="24" :sm="12">
@@ -108,6 +113,7 @@ export default {
   data() {
     return {
       iconVisible: false,
+      finished: false,
       buttonLoading: false,
       selection: [],
       menuTree: [],
@@ -129,8 +135,10 @@ export default {
   },
   methods: {
     initMenuTree() {
+      this.finished = false
       this.$get('system/menu').then((r) => {
         this.menuTree = r.data.data.rows
+        this.finished = true
       })
     },
     initMenu() {
