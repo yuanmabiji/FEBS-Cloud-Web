@@ -189,8 +189,8 @@ export default {
 
         .user-avatar {
           cursor: pointer;
-          width: 2rem;
-          height: 2rem;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
           vertical-align: text-bottom;
         }

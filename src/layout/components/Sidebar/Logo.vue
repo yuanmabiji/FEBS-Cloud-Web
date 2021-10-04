@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     logo() {
-      return require('@/assets/logo.png')
+      return require('@/assets/logo.svg')
     }
   }
 }
@@ -54,11 +54,10 @@ export default {
     width: 100%;
 
     & .sidebar-logo {
-      width: 32px;
-      margin-right: 12px;
+      width: 26px;
+      margin-right: 10px;
       display: inline-block;
       vertical-align: middle;
-      margin-bottom: -2px;
     }
 
     & .sidebar-title {
