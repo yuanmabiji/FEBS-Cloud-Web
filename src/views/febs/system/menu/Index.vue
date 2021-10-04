@@ -8,7 +8,7 @@
             <el-button class="filter-item" type="primary" plain @click="search">
               {{ $t('table.search') }}
             </el-button>
-            <el-button class="filter-item" type="success" ain @click="reset">
+            <el-button class="filter-item" type="success" plain @click="reset">
               {{ $t('table.reset') }}
             </el-button>
             <el-dropdown v-has-any-permission="['menu:add','menu:delete','menu:export']" trigger="click" class="filter-item">
