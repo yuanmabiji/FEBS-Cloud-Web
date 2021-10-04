@@ -79,7 +79,7 @@
                 <el-tree
                   ref="permsTree"
                   :data="permsTree"
-                  :check-strictly="true"
+                  :check-strictly="strictly"
                   show-checkbox
                   accordion
                   node-key="id"
@@ -92,7 +92,11 @@
         <el-card class="box-card">
           <el-row>
             <el-col :span="24" style="text-align: right">
-              <el-button type="primary" :loading="buttonLoading" plain @click="submit">{{ role.roleId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
+              <el-select v-model="strictly" style="width: 120px">
+                <el-option label="父子关联" :value="false" />
+                <el-option label="父子不关联" :value="true" />
+              </el-select>
+              <el-button style="margin-left: 5px" type="primary" :loading="buttonLoading" plain @click="submit">{{ role.roleId === '' ? this.$t('common.add') : this.$t('common.edit') }}</el-button>
             </el-col>
           </el-row>
         </el-card>
@@ -108,6 +112,7 @@ export default {
   components: { Pagination },
   data() {
     return {
+      strictly: true,
       tableKey: 0,
       loading: false,
       buttonLoading: false,
