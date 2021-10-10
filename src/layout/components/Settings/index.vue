@@ -77,7 +77,7 @@ export default {
       },
       set(val) {
         this.$store.commit('setting/setSideBarTheme', val)
-        this.$put('user/theme', { theme: val })
+        this.$put('system/user/theme', { theme: val })
       }
     },
     fixedHeader: {

@@ -79,7 +79,7 @@ export default {
       this.$store.commit('setting/openSettingBar', true)
     },
     logout() {
-      this.$delete('signOut').then(() => {
+      this.$delete('auth/signout').then(() => {
         this.clean()
       }).catch(() => {
         this.clean()
