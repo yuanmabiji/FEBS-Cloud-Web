@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="block" style="padding-top: 10px">
     <template v-if="finished">
       <el-timeline>
         <el-timeline-item v-for="(item,index) of timeline" :key="index" :timestamp="item.loginTime" placement="top">
